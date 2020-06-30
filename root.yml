@@ -1,0 +1,38 @@
+# conjur policy load root root.yml
+
+# Users
+- &users
+  - !user joe
+  - !user rob
+  - !user andrew
+  - !user evan
+
+# Groups
+- &groups
+  - !group admins
+
+# Grants
+- !grant
+  role: !user admin
+  members: !group admins
+- !grant
+  role: !group admins
+  members: *users
+
+# Hosts
+- !host pki-service # host/pki-service - for ownership of `pki` policy
+
+# Policies
+# PKI Service policy branch
+- !policy
+  id: pki
+  owner: !host pki-service
+
+# Ansible Tower policy branch
+- !policy
+  id: tower
+  body:
+    - !group admins # tower/admins
+    - !grant
+      role: !group admins
+      members: *users

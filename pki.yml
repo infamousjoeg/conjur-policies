@@ -1,0 +1,14 @@
+# conjur policy load pki pki.yml
+
+# Users
+- !user pki-admin   # pki/pki-admin
+
+# Groups
+- !group admin      # pki/admin
+
+# Grants
+- !grant
+  role: !group admins
+  members:
+    - !group /admins
+    - !user pki-admin
