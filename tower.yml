@@ -8,6 +8,7 @@
 
 - !policy
   id: ops-team-1
+  owner: !group admins
   body:
     - &variables1
       - !variable access_key_id     # tower/ops-team-1/access_key_id
@@ -26,18 +27,19 @@
 
 - !policy
   id: ops-team-2
+  owner: !group admins
   body:
     - &variables2
       - !variable access_key_id     # tower/ops-team-2/access_key_id
       - !variable secret_access_key # tower/ops-team-2/secret_access_key
 
-  - !host                           # host/tower/ops-team-2
-    annotations:
-      ansible: true
+    - !host                           # host/tower/ops-team-2
+      annotations:
+        ansible: true
 
-  - !permit
-    role: !host
-    privileges:
-      - read
-      - execute
-    resources: *variables2
+    - !permit
+      role: !host
+      privileges:
+        - read
+        - execute
+      resources: *variables2
