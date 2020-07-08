@@ -31,8 +31,3 @@
 # Ansible Tower policy branch
 - !policy
   id: tower
-  body:
-    - !group admins # tower/admins
-    - !grant
-      role: !group admins
-      members: *users

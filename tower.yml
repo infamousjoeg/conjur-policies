@@ -1,5 +1,11 @@
 # conjur policy load tower tower.yml
 
+- !group admins # tower/admins
+
+- !grant
+  role: !group admins
+  members: !group /admins
+
 - !policy
   id: ops-team-1
   body:
