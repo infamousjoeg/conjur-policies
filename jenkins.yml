@@ -1,0 +1,33 @@
+# conjur policy load jenkins jenkins.yml
+
+- !group admins # jenkins/admins
+
+- !grant
+  role: !group admins
+  members: !group /admins
+
+- !host	controller		    # host/jenkins/controller
+
+- &variables0
+  - !variable pas_hostname
+  - !variable ccp_client-cert
+  - !variable ccp_client-priv-key
+
+- !permit
+  role: !host controller
+  privileges: [ read, execute ]
+  resources: *variables0
+
+- !policy
+  id: dev-team-1
+  body:
+    - !host                         # host/jenkins/dev-team-1
+      annotations:
+        jenkins: true
+
+- !policy
+  id: dev-team-2
+  body:
+    - !host                           # host/jenkins/dev-team-2
+      annotations:
+        jenkins: true

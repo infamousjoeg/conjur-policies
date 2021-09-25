@@ -1,0 +1,13 @@
+- !policy
+  id: github
+  body:
+    - &variables
+      - !variable username
+      - !variable token
+
+    - !group secret-users
+
+    - !permit
+      role: !group secret-users
+      privileges: [ read, execute ]
+      resources: *variables

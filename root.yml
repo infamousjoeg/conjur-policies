@@ -6,6 +6,7 @@
   - !user rob
   - !user andrew
   - !user evan
+  - !host refactr
 
 # Groups
 - &groups
@@ -18,6 +19,34 @@
 - !grant
   role: !group admins
   members: *users
+- !grant
+  role: !group DemoVault/LOB_CICD/D-Nix-AWSEC2-Keypairs/delegation/consumers
+  members:
+    - !host tower/ops-team-1
+    - !host tower/ops-team-2
+- !grant
+  role: !group DemoVault/LOB_CICD/D-Win-SvcAccts/delegation/consumers
+  member: !host jenkins/controller
+- !grant
+  role: !group DemoVault/LOB_CICD/D-AWS-AccessKeys/delegation/consumers
+  members:
+    - !host jenkins/controller
+    - !host jenkins/dev-team-1
+    - !host jenkins/dev-team-2
+    - !host tower/ops-team-1
+    - !host tower/ops-team-2
+- !grant
+  role: !group DemoVault-admins
+  members:
+    - !host refactr
+- !grant
+  role: !policy root
+  members:
+    - !host refactr
+- !permit
+  role: !host refactr
+  privileges: [ read, execute, update ]
+  resource: !policy root
 
 # Hosts
 - !host pki-service # host/pki-service - for ownership of `pki` policy
@@ -31,3 +60,11 @@
 # Ansible Tower policy branch
 - !policy
   id: tower
+
+# Postgres Secretless policy branch
+- !policy
+  id: secretless-demo
+
+# Jenkins policy branch
+- !policy
+  id: jenkins

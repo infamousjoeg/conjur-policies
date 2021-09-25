@@ -1,0 +1,11 @@
+- !policy
+  id: conjur/authn-iam/prod
+  body:
+    - !webservice
+
+    - !group clients
+
+    - !permit
+      role: !group clients
+      privileges: [ read, authenticate ]
+      resource: !webservice

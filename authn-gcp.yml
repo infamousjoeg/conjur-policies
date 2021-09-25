@@ -1,0 +1,20 @@
+- !policy
+  id: conjur/authn-gcp
+  body:
+    
+    # Activates the authn-gcp authenticator web service
+    - !webservice
+
+    # Creates a group called conjur/authn-gcp/apps
+    - !group
+      id: apps
+      annotations:
+        description: Group of hosts that can authenticate using the authn-gcp authenticator
+
+    # Permits members of conjur/authn-gcp/apps the ability to
+    ## authenticate using the authn-gcp authenticator web
+    ## service
+    - !permit
+      role: !group apps
+      privilege: [ read, authenticate ]
+      resource: !webservice
