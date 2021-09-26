@@ -28,7 +28,7 @@
   role: !group DemoVault/LOB_CICD/D-Win-SvcAccts/delegation/consumers
   members:
     - !host jenkins/controller
-    - !host authn-jwt/jenkins/Test-Global-Secret-Retrieval
+    - !host conjur/authn-jwt/jenkins/Test-Global-Secret-Retrieval
 - !grant
   role: !group DemoVault/LOB_CICD/D-AWS-AccessKeys/delegation/consumers
   members:
@@ -37,7 +37,7 @@
     - !host jenkins/dev-team-2
     - !host tower/ops-team-1
     - !host tower/ops-team-2
-    - !host authn-jwt/jenkins/Test-Global-Secret-Retrieval
+    - !host conjur/authn-jwt/jenkins/Test-Global-Secret-Retrieval
 - !grant
   role: !group DemoVault-admins
   members:
