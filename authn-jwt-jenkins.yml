@@ -56,7 +56,6 @@
         annotations:
           description: Freestyle project in Jenkins named Test-Global-Secret-Retrieval.
           authn-jwt/jenkins/jenkins_pronoun: Project
-          authn-jwt/jenkins/aud: GLOBAL
 
     - !grant
       role: !group consumers
