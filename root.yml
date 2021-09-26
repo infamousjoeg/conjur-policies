@@ -29,6 +29,7 @@
   members:
     - !host jenkins/controller
     - !host conjur/authn-jwt/jenkins/Test-Global-Secret-Retrieval
+    - !host conjur/authn-jwt/jenkins/Test-Secret-Retrieval-1
 - !grant
   role: !group DemoVault/LOB_CICD/D-AWS-AccessKeys/delegation/consumers
   members:
