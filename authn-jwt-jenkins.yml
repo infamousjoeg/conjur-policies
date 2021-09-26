@@ -40,7 +40,8 @@
         description: A JSON Web Key Set (JWKS) URI. If the JWKS vendor provides both a jwks-uri and an equivalent provider-uri, you can use the provider-uri which has an easier interface to work with.
     
     # Group of hosts that can authenticate using this JWT Authenticator
-    - !group consumers
+    - !group 
+      id: consumers
       annotations:
         description: Group of hosts that can authenticate using the authn-jwt/jenkins authenticator.
     
