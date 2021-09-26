@@ -58,6 +58,10 @@
           authn-jwt/jenkins/jenkins_pronoun: Project
           authn-jwt/jenkins/aud: GLOBAL
 
+    - !grant
+      role: !group consumers
+      members: *hosts
+
     - !webservice
       id: status
 
