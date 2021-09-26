@@ -59,8 +59,8 @@
       - !host
         id: Test-Secret-Retrieval-1
         annotations:
-          description: Freestyle project in Jenkins name Test-Secret-Retrieval-1 in the Dev-Group-1 folder.
-          authn-jwt/jenkins/jenkins_parent_name: Dev-Group-1
+          description: Freestyle project in Jenkins name Test-Secret-Retrieval-1 in the Dev-Team-1 folder.
+          authn-jwt/jenkins/jenkins_parent_name: Dev-Team-1
           authn-jwt/jenkins/jenkins_pronoun: Project
 
     - !grant
