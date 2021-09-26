@@ -22,10 +22,10 @@
     #   annotations:
     #     description: JWT Authenticator bases authentication on a combination of the claim in the token-app-property and the full path of the application identity (host) in Conjur. This variable is optional, and is used in conjunction with token-app-property. It has no purpose when standing alone.
 
-    # - !variable
-    #   id: issuer
-    #   annotations:
-    #     description: JWT Authenticator bases authentication on the JWT issuer. This variable is optional, and is relevant only if there is an iss claim in the JWT. The issuer variable and iss claim values must match.
+    - !variable
+      id: issuer
+      annotations:
+          description: JWT Authenticator bases authentication on the JWT issuer. This variable is optional, and is relevant only if there is an iss claim in the JWT. The issuer variable and iss claim values must match.
 
     # Mandatory: The JWT Provider URI: You must provide either a provider-uri or jwks-uri
 
@@ -50,6 +50,14 @@
       privilege: [ read, authenticate ]
       resource: !webservice
     
+    - &hosts
+      - !host
+        id: Test-Global-Secret-Retrieval
+        annotations:
+          description: Freestyle project in Jenkins named Test-Global-Secret-Retrieval.
+          authn-jwt/jenkins/jenkins_pronoun: Project
+          authn-jwt/jenkins/aud: GLOBAL
+
     - !webservice
       id: status
 
