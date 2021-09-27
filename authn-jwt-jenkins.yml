@@ -67,7 +67,7 @@
         annotations:
           description: Pipeline project in Jenkins named cybr-cli.
           authn-jwt/jenkins/jenkins_pronoun: Pipeline
-          authn-jwt/jenkins/jenkins_noun: Build
+          authn-jwt/jenkins/jenkins_task_noun: Build
 
     - !grant
       role: !group consumers

@@ -1,12 +1,3 @@
 ---
 - !delete
-  record: !variable jenkins/dev-team-1/access_key_id
-
-- !delete
-  record: !variable jenkins/dev-team-1/secret_access_key
-
-- !delete
-  record: !variable jenkins/dev-team-2/access_key_id
-
-- !delete
-  record: !variable jenkins/dev-team-2/secret_access_key
+  record: !host conjur/authn-jwt/jenkins/cybr-cli
