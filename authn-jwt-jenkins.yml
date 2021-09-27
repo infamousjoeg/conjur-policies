@@ -59,9 +59,15 @@
       - !host
         id: Test-Secret-Retrieval-1
         annotations:
-          description: Freestyle project in Jenkins name Test-Secret-Retrieval-1 in the Dev-Team-1 folder.
+          description: Freestyle project in Jenkins named Test-Secret-Retrieval-1 in the Dev-Team-1 folder.
           authn-jwt/jenkins/jenkins_parent_name: Dev-Team-1
           authn-jwt/jenkins/jenkins_pronoun: Project
+      - !host
+        id: cybr-cli
+        annotations:
+          description: Pipeline project in Jenkins named cybr-cli.
+          authn-jwt/jenkins/jenkins_pronoun: Pipeline
+          authn-jwt/jenkins/jenkins_noun: Build
 
     - !grant
       role: !group consumers
