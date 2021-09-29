@@ -21,26 +21,29 @@
   role: !group admins
   members: *users
 - !grant
-  role: !group DemoVault/LOB_CICD/D-Nix-AWSEC2-Keypairs/delegation/consumers
+  role: !group DemoVault/LOB_CICD_12-3/D-Nix-AWSEC2-Keypairs/delegation/consumers
   members:
     - !host tower/ops-team-1
     - !host tower/ops-team-2
 - !grant
-  role: !group DemoVault/LOB_CICD/D-Win-SvcAccts/delegation/consumers
+  role: !group DemoVault/LOB_CICD_12-3/D-Win-SvcAccts/delegation/consumers
   members:
     - !host jenkins/controller
     - !host conjur/authn-jwt/jenkins/Test-Global-Secret-Retrieval
     - !host conjur/authn-jwt/jenkins/Test-Secret-Retrieval-1
     - !host conjur/authn-jwt/jenkins/cybr-cli
 - !grant
-  role: !group DemoVault/LOB_CICD/D-AWS-AccessKeys/delegation/consumers
+  role: !group DemoVault/LOB_CICD_12-3/D-CI-AWS-AccessKeys/delegation/consumers
   members:
     - !host jenkins/controller
     - !host jenkins/dev-team-1
     - !host jenkins/dev-team-2
+    - !host conjur/authn-jwt/jenkins/Test-Global-Secret-Retrieval
+- !grant
+  role: !group DemoVault/LOB_CICD_12-3/D-CD-AWS-AccessKeys/delegation/consumers
+  members:
     - !host tower/ops-team-1
     - !host tower/ops-team-2
-    - !host conjur/authn-jwt/jenkins/Test-Global-Secret-Retrieval
 - !grant
   role: !group DemoVault-admins
   members:
