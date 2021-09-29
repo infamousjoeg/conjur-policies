@@ -1,134 +1,264 @@
 - !delete
-  records:
-    - !policy DemoVault/LOB_CICD
-    - !policy DemoVault/LOB_Testing
-    - !policy DemoVault/LOB_CICD/CICD-Secrets/delegation
-    - !policy DemoVault/LOB_Testing/ephemeral
-    - !policy DemoVault/LOB_CICD/CICD-Secrets
-    - !policy DemoVault/LOB_Testing/ephemeral/delegation
-    - !policy DemoVault/LOB_CICD/D-Nix-AWSEC2-Keypairs
-    - !policy DemoVault/LOB_CICD/D-Nix-AWSEC2-Keypairs/delegation
-    - !policy DemoVault/LOB_CICD/demoapp1
-    - !policy DemoVault/LOB_CICD/demoapp1/delegation
-    - !policy DemoVault/LOB_CICD/D-Win-SvcAccts
-    - !policy DemoVault/LOB_CICD/D-Win-SvcAccts/delegation
-    - !policy DemoVault/LOB_CICD/D-AWS-AccessKeys
-    - !policy DemoVault/LOB_CICD/D-AWS-AccessKeys/delegation
-    - !policy DemoVault/LOB_CICD/D-App-Refactr-Onboarding
-    - !policy DemoVault/LOB_CICD/D-App-Refactr-Onboarding/delegation
-    - !policy DemoVault/LOB_CICD_NG
-    - !policy DemoVault/LOB_CICD_12-3
-    - !group DemoVault/LOB_CICD-admins
-    - !group DemoVault/LOB_CICD/TestDemo4-admins
-    - !group DemoVault/LOB_CICD/TestDemo5-admins
-    - !group DemoVault/LOB_CICD/TestDemo6-admins
-    - !group DemoVault/LOB_CICD/TestDemo7-admins
-    - !group DemoVault/LOB_CICD/TestDemo10-admins
-    - !group DemoVault/LOB_Testing-admins
-    - !group DemoVault/LOB_CICD/TestDemo11-admins
-    - !group DemoVault/LOB_CICD/TestDemo12-admins
-    - !group DemoVault/LOB_CICD/TestDemo13-admins
-    - !group DemoVault/LOB_CICD/TestDemo14-admins
-    - !group DemoVault/LOB_Testing/ephemeral-admins
-    - !group DemoVault/LOB_CICD/TestDemo15-admins
-    - !group DemoVault/LOB_Testing/ephemeral/delegation/consumers
-    - !group DemoVault/LOB_CICD/TestDemo16-admins
-    - !group DemoVault/LOB_CICD/TestDemo17-admins
-    - !group DemoVault/LOB_CICD/CICD-Secrets-admins
-    - !group DemoVault/LOB_CICD/CICD-Secrets/delegation/consumers
-    - !group DemoVault/LOB_CICD/D-Nix-AWSEC2-Keypairs-admins
-    - !group DemoVault/LOB_CICD/D-Nix-AWSEC2-Keypairs/delegation/consumers
-    - !group DemoVault/LOB_CICD/demoapp1-admins
-    - !group DemoVault/LOB_CICD/demoapp1/delegation/consumers
-    - !group DemoVault/LOB_CICD/D-Win-SvcAccts-admins
-    - !group DemoVault/LOB_CICD/D-Win-SvcAccts/delegation/consumers
-    - !group DemoVault/LOB_CICD/D-AWS-AccessKeys-admins
-    - !group DemoVault/LOB_CICD/D-AWS-AccessKeys/delegation/consumers
-    - !group DemoVault/LOB_CICD/D-App-Refactr-Onboarding-admins
-    - !group DemoVault/LOB_CICD/D-App-Refactr-Onboarding/delegation/consumers
-    - !group DemoVault/LOB_CICD_NG-admins
-    - !group DemoVault/LOB_CICD_12-3-admins
-    - !variable DemoVault/LOB_CICD/CICD-Secrets/dual_account/password
-    - !variable DemoVault/LOB_CICD/CICD-Secrets/dual_account/username
-    - !variable DemoVault/LOB_CICD/CICD-Secrets/Database-MySQL-mysql.joegarcia.dev-dev_db_user/password
-    - !variable DemoVault/LOB_CICD/CICD-Secrets/Database-MySQL-mysql.joegarcia.dev-dev_db_user/username
-    - !variable DemoVault/LOB_CICD/CICD-Secrets/Database-MySQL-mysql.joegarcia.dev-prod_db_user/password
-    - !variable DemoVault/LOB_CICD/CICD-Secrets/Database-MySQL-mysql.joegarcia.dev-prod_db_user/username
-    - !variable DemoVault/LOB_CICD/CICD-Secrets/Database-MySQL-mysql.joegarcia.dev-test_db_user/password
-    - !variable DemoVault/LOB_CICD/CICD-Secrets/Database-MySQL-mysql.joegarcia.dev-test_db_user/username
-    - !variable DemoVault/LOB_Testing/ephemeral/Application-CyberArkPTA-8.8.8.8-sample-user/password
-    - !variable DemoVault/LOB_Testing/ephemeral/Application-CyberArkPTA-8.8.8.8-sample-user/username
-    - !variable DemoVault/LOB_CICD/CICD-Secrets/Cloud Service-AWSAccessKeys-kops/password
-    - !variable DemoVault/LOB_CICD/CICD-Secrets/Cloud Service-AWSAccessKeys-kops/username
-    - !variable DemoVault/LOB_CICD/D-Nix-AWSEC2-Keypairs/cyberark-pasaas-privkey/password
-    - !variable DemoVault/LOB_CICD/D-Nix-AWSEC2-Keypairs/cyberark-pasaas-privkey/username
-    - !variable DemoVault/LOB_CICD/D-Nix-AWSEC2-Keypairs/Operating System-UnixSSHKeys-PASaaS AWS Lab-Depends/password
-    - !variable DemoVault/LOB_CICD/D-Nix-AWSEC2-Keypairs/Operating System-UnixSSHKeys-PASaaS AWS Lab-Depends/username
-    - !variable DemoVault/LOB_CICD/demoapp1/MySQL-Dev/password
-    - !variable DemoVault/LOB_CICD/demoapp1/MySQL-Dev/username
-    - !variable DemoVault/LOB_CICD/D-Win-SvcAccts/dualaccount/password
-    - !variable DemoVault/LOB_CICD/D-Win-SvcAccts/dualaccount/username
-    - !variable DemoVault/LOB_CICD/D-Win-SvcAccts/Operating System-WinDomain-10.0.4.48-Svc_CybrCLI/password
-    - !variable DemoVault/LOB_CICD/D-Win-SvcAccts/Operating System-WinDomain-10.0.4.48-Svc_CybrCLI/username
-    - !variable DemoVault/LOB_CICD/D-Win-SvcAccts/Operating System-WinDomain-joegarcia.dev-Svc_SSIS/password
-    - !variable DemoVault/LOB_CICD/D-Win-SvcAccts/Operating System-WinDomain-joegarcia.dev-Svc_SSIS/username
-    - !variable DemoVault/LOB_CICD/D-AWS-AccessKeys/Cloud Service-AWSAccessKeys-aws-cli/password
-    - !variable DemoVault/LOB_CICD/D-AWS-AccessKeys/Cloud Service-AWSAccessKeys-aws-cli/username
-    - !variable DemoVault/LOB_CICD/D-AWS-AccessKeys/Cloud Service-AWSAccessKeys-jenkins_dev-team-1/password
-    - !variable DemoVault/LOB_CICD/D-AWS-AccessKeys/Cloud Service-AWSAccessKeys-jenkins_dev-team-1/username
-    - !variable DemoVault/LOB_CICD/D-AWS-AccessKeys/Cloud Service-AWSAccessKeys-jenkins_dev-team-2/password
-    - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-65-TestAccount/password
-    - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-65-TestAccount/username
-    - !variable DemoVault/LOB_CICD/D-AWS-AccessKeys/Cloud Service-AWSAccessKeys-jenkins_dev-team-2/username
-    - !variable DemoVault/LOB_CICD/D-AWS-AccessKeys/Cloud Service-AWSAccessKeys-tower_ops-team-1/password
-    - !variable DemoVault/LOB_CICD/D-AWS-AccessKeys/Cloud Service-AWSAccessKeys-tower_ops-team-1/username
-    - !variable DemoVault/LOB_CICD/D-AWS-AccessKeys/Cloud Service-AWSAccessKeys-tower_ops-team-2/password
-    - !variable DemoVault/LOB_CICD/D-AWS-AccessKeys/Cloud Service-AWSAccessKeys-tower_ops-team-2/username
-    - !variable DemoVault/LOB_CICD/D-AWS-AccessKeys/Cloud Service-AWSAccessKeys-jenkins_cybr-cli/password
-    - !variable DemoVault/LOB_CICD/D-AWS-AccessKeys/Cloud Service-AWSAccessKeys-jenkins_cybr-cli/username
-    - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-64-TestAccount/password
-    - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-64-TestAccount/username
-    - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-68-TestAccount/password
-    - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-68-TestAccount/username
-    - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-69-TestAccount/password
-    - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-69-TestAccount/username
-    - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-70-TestAccount/password
-    - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-70-TestAccount/username
-    - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-66-TestAccount/password
-    - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-66-TestAccount/username
-    - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-67-TestAccount/password
-    - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-67-TestAccount/username
-    - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-71-TestAccount/password
-    - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-71-TestAccount/username
-    - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-72-TestAccount/password
-    - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-72-TestAccount/username
-    - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-73-TestAccount/password
-    - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-73-TestAccount/username
-    - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-74-TestAccount/password
-    - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-74-TestAccount/username
-    - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-75-TestAccount/password
-    - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-75-TestAccount/username
-    - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-76-TestAccount/password
-    - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-76-TestAccount/username
-    - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-77-TestAccount/password
-    - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-77-TestAccount/username
-    - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-78-TestAccount/password
-    - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-78-TestAccount/username
-    - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-79-TestAccount/password
-    - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-79-TestAccount/username
-    - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-80-TestAccount/password
-    - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-80-TestAccount/username
-    - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-81-TestAccount/password
-    - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-81-TestAccount/username
-    - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-82-TestAccount/password
-    - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-82-TestAccount/username
-    - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-83-TestAccount/password
-    - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-83-TestAccount/username
-    - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-92-TestAccount/password
-    - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-92-TestAccount/username
-    - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-93-TestAccount/password
-    - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-93-TestAccount/username
-    - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-94-TestAccount/password
-    - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-94-TestAccount/username
-    - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-95-TestAccount/password
-    - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-95-TestAccount/username
+  record: - !policy DemoVault/LOB_CICD
+- !delete
+  record: - !policy DemoVault/LOB_Testing
+- !delete
+  record: - !policy DemoVault/LOB_CICD/CICD-Secrets/delegation
+- !delete
+  record: - !policy DemoVault/LOB_Testing/ephemeral
+- !delete
+  record: - !policy DemoVault/LOB_CICD/CICD-Secrets
+- !delete
+  record: - !policy DemoVault/LOB_Testing/ephemeral/delegation
+- !delete
+  record: - !policy DemoVault/LOB_CICD/D-Nix-AWSEC2-Keypairs
+- !delete
+  record: - !policy DemoVault/LOB_CICD/D-Nix-AWSEC2-Keypairs/delegation
+- !delete
+  record: - !policy DemoVault/LOB_CICD/demoapp1
+- !delete
+  record: - !policy DemoVault/LOB_CICD/demoapp1/delegation
+- !delete
+  record: - !policy DemoVault/LOB_CICD/D-Win-SvcAccts
+- !delete
+  record: - !policy DemoVault/LOB_CICD/D-Win-SvcAccts/delegation
+- !delete
+  record: - !policy DemoVault/LOB_CICD/D-AWS-AccessKeys
+- !delete
+  record: - !policy DemoVault/LOB_CICD/D-AWS-AccessKeys/delegation
+- !delete
+  record: - !policy DemoVault/LOB_CICD/D-App-Refactr-Onboarding
+- !delete
+  record: - !policy DemoVault/LOB_CICD/D-App-Refactr-Onboarding/delegation
+- !delete
+  record: - !policy DemoVault/LOB_CICD_NG
+- !delete
+  record: - !policy DemoVault/LOB_CICD_12-3
+- !delete
+  record: - !group DemoVault/LOB_CICD-admins
+- !delete
+  record: - !group DemoVault/LOB_CICD/TestDemo4-admins
+- !delete
+  record: - !group DemoVault/LOB_CICD/TestDemo5-admins
+- !delete
+  record: - !group DemoVault/LOB_CICD/TestDemo6-admins
+- !delete
+  record: - !group DemoVault/LOB_CICD/TestDemo7-admins
+- !delete
+  record: - !group DemoVault/LOB_CICD/TestDemo10-admins
+- !delete
+  record: - !group DemoVault/LOB_Testing-admins
+- !delete
+  record: - !group DemoVault/LOB_CICD/TestDemo11-admins
+- !delete
+  record: - !group DemoVault/LOB_CICD/TestDemo12-admins
+- !delete
+  record: - !group DemoVault/LOB_CICD/TestDemo13-admins
+- !delete
+  record: - !group DemoVault/LOB_CICD/TestDemo14-admins
+- !delete
+  record: - !group DemoVault/LOB_Testing/ephemeral-admins
+- !delete
+  record: - !group DemoVault/LOB_CICD/TestDemo15-admins
+- !delete
+  record: - !group DemoVault/LOB_Testing/ephemeral/delegation/consumers
+- !delete
+  record: - !group DemoVault/LOB_CICD/TestDemo16-admins
+- !delete
+  record: - !group DemoVault/LOB_CICD/TestDemo17-admins
+- !delete
+  record: - !group DemoVault/LOB_CICD/CICD-Secrets-admins
+- !delete
+  record: - !group DemoVault/LOB_CICD/CICD-Secrets/delegation/consumers
+- !delete
+  record: - !group DemoVault/LOB_CICD/D-Nix-AWSEC2-Keypairs-admins
+- !delete
+  record: - !group DemoVault/LOB_CICD/D-Nix-AWSEC2-Keypairs/delegation/consumers
+- !delete
+  record: - !group DemoVault/LOB_CICD/demoapp1-admins
+- !delete
+  record: - !group DemoVault/LOB_CICD/demoapp1/delegation/consumers
+- !delete
+  record: - !group DemoVault/LOB_CICD/D-Win-SvcAccts-admins
+- !delete
+  record: - !group DemoVault/LOB_CICD/D-Win-SvcAccts/delegation/consumers
+- !delete
+  record: - !group DemoVault/LOB_CICD/D-AWS-AccessKeys-admins
+- !delete
+  record: - !group DemoVault/LOB_CICD/D-AWS-AccessKeys/delegation/consumers
+- !delete
+  record: - !group DemoVault/LOB_CICD/D-App-Refactr-Onboarding-admins
+- !delete
+  record: - !group DemoVault/LOB_CICD/D-App-Refactr-Onboarding/delegation/consumers
+- !delete
+  record: - !group DemoVault/LOB_CICD_NG-admins
+- !delete
+  record: - !group DemoVault/LOB_CICD_12-3-admins
+- !delete
+  record: - !variable DemoVault/LOB_CICD/CICD-Secrets/dual_account/password
+- !delete
+  record: - !variable DemoVault/LOB_CICD/CICD-Secrets/dual_account/username
+- !delete
+  record: - !variable DemoVault/LOB_CICD/CICD-Secrets/Database-MySQL-mysql.joegarcia.dev-dev_db_user/password
+- !delete
+  record: - !variable DemoVault/LOB_CICD/CICD-Secrets/Database-MySQL-mysql.joegarcia.dev-dev_db_user/username
+- !delete
+  record: - !variable DemoVault/LOB_CICD/CICD-Secrets/Database-MySQL-mysql.joegarcia.dev-prod_db_user/password
+- !delete
+  record: - !variable DemoVault/LOB_CICD/CICD-Secrets/Database-MySQL-mysql.joegarcia.dev-prod_db_user/username
+- !delete
+  record: - !variable DemoVault/LOB_CICD/CICD-Secrets/Database-MySQL-mysql.joegarcia.dev-test_db_user/password
+- !delete
+  record: - !variable DemoVault/LOB_CICD/CICD-Secrets/Database-MySQL-mysql.joegarcia.dev-test_db_user/username
+- !delete
+  record: - !variable DemoVault/LOB_Testing/ephemeral/Application-CyberArkPTA-8.8.8.8-sample-user/password
+- !delete
+  record: - !variable DemoVault/LOB_Testing/ephemeral/Application-CyberArkPTA-8.8.8.8-sample-user/username
+- !delete
+  record: - !variable DemoVault/LOB_CICD/CICD-Secrets/Cloud Service-AWSAccessKeys-kops/password
+- !delete
+  record: - !variable DemoVault/LOB_CICD/CICD-Secrets/Cloud Service-AWSAccessKeys-kops/username
+- !delete
+  record: - !variable DemoVault/LOB_CICD/D-Nix-AWSEC2-Keypairs/cyberark-pasaas-privkey/password
+- !delete
+  record: - !variable DemoVault/LOB_CICD/D-Nix-AWSEC2-Keypairs/cyberark-pasaas-privkey/username
+- !delete
+  record: - !variable DemoVault/LOB_CICD/D-Nix-AWSEC2-Keypairs/Operating System-UnixSSHKeys-PASaaS AWS Lab-Depends/password
+- !delete
+  record: - !variable DemoVault/LOB_CICD/D-Nix-AWSEC2-Keypairs/Operating System-UnixSSHKeys-PASaaS AWS Lab-Depends/username
+- !delete
+  record: - !variable DemoVault/LOB_CICD/demoapp1/MySQL-Dev/password
+- !delete
+  record: - !variable DemoVault/LOB_CICD/demoapp1/MySQL-Dev/username
+- !delete
+  record: - !variable DemoVault/LOB_CICD/D-Win-SvcAccts/dualaccount/password
+- !delete
+  record: - !variable DemoVault/LOB_CICD/D-Win-SvcAccts/dualaccount/username
+- !delete
+  record: - !variable DemoVault/LOB_CICD/D-Win-SvcAccts/Operating System-WinDomain-10.0.4.48-Svc_CybrCLI/password
+- !delete
+  record: - !variable DemoVault/LOB_CICD/D-Win-SvcAccts/Operating System-WinDomain-10.0.4.48-Svc_CybrCLI/username
+- !delete
+  record: - !variable DemoVault/LOB_CICD/D-Win-SvcAccts/Operating System-WinDomain-joegarcia.dev-Svc_SSIS/password
+- !delete
+  record: - !variable DemoVault/LOB_CICD/D-Win-SvcAccts/Operating System-WinDomain-joegarcia.dev-Svc_SSIS/username
+- !delete
+  record: - !variable DemoVault/LOB_CICD/D-AWS-AccessKeys/Cloud Service-AWSAccessKeys-aws-cli/password
+- !delete
+  record: - !variable DemoVault/LOB_CICD/D-AWS-AccessKeys/Cloud Service-AWSAccessKeys-aws-cli/username
+- !delete
+  record: - !variable DemoVault/LOB_CICD/D-AWS-AccessKeys/Cloud Service-AWSAccessKeys-jenkins_dev-team-1/password
+- !delete
+  record: - !variable DemoVault/LOB_CICD/D-AWS-AccessKeys/Cloud Service-AWSAccessKeys-jenkins_dev-team-1/username
+- !delete
+  record: - !variable DemoVault/LOB_CICD/D-AWS-AccessKeys/Cloud Service-AWSAccessKeys-jenkins_dev-team-2/password
+- !delete
+  record: - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-65-TestAccount/password
+- !delete
+  record: - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-65-TestAccount/username
+- !delete
+  record: - !variable DemoVault/LOB_CICD/D-AWS-AccessKeys/Cloud Service-AWSAccessKeys-jenkins_dev-team-2/username
+- !delete
+  record: - !variable DemoVault/LOB_CICD/D-AWS-AccessKeys/Cloud Service-AWSAccessKeys-tower_ops-team-1/password
+- !delete
+  record: - !variable DemoVault/LOB_CICD/D-AWS-AccessKeys/Cloud Service-AWSAccessKeys-tower_ops-team-1/username
+- !delete
+  record: - !variable DemoVault/LOB_CICD/D-AWS-AccessKeys/Cloud Service-AWSAccessKeys-tower_ops-team-2/password
+- !delete
+  record: - !variable DemoVault/LOB_CICD/D-AWS-AccessKeys/Cloud Service-AWSAccessKeys-tower_ops-team-2/username
+- !delete
+  record: - !variable DemoVault/LOB_CICD/D-AWS-AccessKeys/Cloud Service-AWSAccessKeys-jenkins_cybr-cli/password
+- !delete
+  record: - !variable DemoVault/LOB_CICD/D-AWS-AccessKeys/Cloud Service-AWSAccessKeys-jenkins_cybr-cli/username
+- !delete
+  record: - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-64-TestAccount/password
+- !delete
+  record: - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-64-TestAccount/username
+- !delete
+  record: - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-68-TestAccount/password
+- !delete
+  record: - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-68-TestAccount/username
+- !delete
+  record: - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-69-TestAccount/password
+- !delete
+  record: - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-69-TestAccount/username
+- !delete
+  record: - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-70-TestAccount/password
+- !delete
+  record: - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-70-TestAccount/username
+- !delete
+  record: - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-66-TestAccount/password
+- !delete
+  record: - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-66-TestAccount/username
+- !delete
+  record: - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-67-TestAccount/password
+- !delete
+  record: - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-67-TestAccount/username
+- !delete
+  record: - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-71-TestAccount/password
+- !delete
+  record: - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-71-TestAccount/username
+- !delete
+  record: - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-72-TestAccount/password
+- !delete
+  record: - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-72-TestAccount/username
+- !delete
+  record: - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-73-TestAccount/password
+- !delete
+  record: - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-73-TestAccount/username
+- !delete
+  record: - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-74-TestAccount/password
+- !delete
+  record: - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-74-TestAccount/username
+- !delete
+  record: - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-75-TestAccount/password
+- !delete
+  record: - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-75-TestAccount/username
+- !delete
+  record: - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-76-TestAccount/password
+- !delete
+  record: - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-76-TestAccount/username
+- !delete
+  record: - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-77-TestAccount/password
+- !delete
+  record: - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-77-TestAccount/username
+- !delete
+  record: - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-78-TestAccount/password
+- !delete
+  record: - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-78-TestAccount/username
+- !delete
+  record: - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-79-TestAccount/password
+- !delete
+  record: - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-79-TestAccount/username
+- !delete
+  record: - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-80-TestAccount/password
+- !delete
+  record: - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-80-TestAccount/username
+- !delete
+  record: - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-81-TestAccount/password
+- !delete
+  record: - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-81-TestAccount/username
+- !delete
+  record: - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-82-TestAccount/password
+- !delete
+  record: - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-82-TestAccount/username
+- !delete
+  record: - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-83-TestAccount/password
+- !delete
+  record: - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-83-TestAccount/username
+- !delete
+  record: - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-92-TestAccount/password
+- !delete
+  record: - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-92-TestAccount/username
+- !delete
+  record: - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-93-TestAccount/password
+- !delete
+  record: - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-93-TestAccount/username
+- !delete
+  record: - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-94-TestAccount/password
+- !delete
+  record: - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-94-TestAccount/username
+- !delete
+  record: - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-95-TestAccount/password
+- !delete
+  record: - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-95-TestAccount/username
