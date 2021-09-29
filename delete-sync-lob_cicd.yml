@@ -1,4 +1,5 @@
-- &records
+- !delete
+  records:
     - !policy DemoVault/LOB_CICD
     - !policy DemoVault/LOB_Testing
     - !policy DemoVault/LOB_CICD/CICD-Secrets/delegation
@@ -131,6 +132,3 @@
     - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-94-TestAccount/username
     - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-95-TestAccount/password
     - !variable DemoVault/LOB_CICD/D-App-Refactr-Onboarding/refactr-onboarded-95-TestAccount/username
-
-- !delete
-  records: *records
