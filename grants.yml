@@ -1,0 +1,55 @@
+# conjur policy load root grants.yml
+
+# Grant admin group admin rights
+- !grant
+  role: !user admin
+  members: !group admins
+
+# Grant user collection membership to admin group
+- !grant
+  role: !group admins
+  members:
+    - !user joe
+    - !user rob
+    - !user andrew
+    - !user evan
+    - !host refactr
+    - !user james
+
+# Grant tower host identities to AWS Keypair consumer group
+- !grant
+  role: !group DemoVault/LOB_CICD_12-3/D-Nix-AWSEC2-Keypairs/delegation/consumers
+  members:
+    - !host tower/ops-team-1
+    - !host tower/ops-team-2
+
+# Grant jenkins host identities to Windows Service Accounts consumer group
+- !grant
+  role: !group DemoVault/LOB_CICD_12-3/D-Win-SvcAccts/delegation/consumers
+  members:
+    - !host jenkins/controller
+    - !host conjur/authn-jwt/jenkins/Test-Global-Secret-Retrieval
+    - !host conjur/authn-jwt/jenkins/Test-Secret-Retrieval-1
+    - !host conjur/authn-jwt/jenkins/cybr-cli
+
+# Grant jenkins host identities to AWS Access Keys for CI consumer group
+- !grant
+  role: !group DemoVault/LOB_CICD_12-3/D-CI-AWS-AccessKeys/delegation/consumers
+  members:
+    - !host jenkins/controller
+    - !host jenkins/dev-team-1
+    - !host jenkins/dev-team-2
+    - !host conjur/authn-jwt/jenkins/Test-Global-Secret-Retrieval
+
+# Grant tower host identities to AWS Access Keys for CD consumer group
+- !grant
+  role: !group DemoVault/LOB_CICD_12-3/D-CD-AWS-AccessKeys/delegation/consumers
+  members:
+    - !host tower/ops-team-1
+    - !host tower/ops-team-2
+
+# Grant refactr host identity to DemoVault admin group
+- !grant
+  role: !group DemoVault-admins
+  members:
+    - !host refactr

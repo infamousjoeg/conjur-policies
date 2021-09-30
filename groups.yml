@@ -1,0 +1,3 @@
+# conjur policy load root groups.yml
+
+- !group admins

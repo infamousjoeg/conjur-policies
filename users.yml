@@ -1,0 +1,8 @@
+# conjur policy load root users.yml
+
+# To add users to admin group, update grants.yml policy file
+- !user joe
+- !user rob
+- !user andrew
+- !user evan
+- !user james
