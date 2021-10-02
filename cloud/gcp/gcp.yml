@@ -1,0 +1,19 @@
+# conjur policy load cloud gcp.yml
+
+- !policy
+  id: gcp
+  annotations:
+    description: Base policy for children GCP service policies
+  body:
+    # Create gcp/admins group
+    - !group
+      id: admins
+      annotations:
+        description: Owner of GCP branch policies
+        editable: "true"
+    
+    # Grant conjur-admins to be gcp/admins
+    - !grant
+      role: !group admins
+      members:
+        - !group /conjur-admins

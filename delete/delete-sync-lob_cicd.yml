@@ -1,3 +1,5 @@
+# conjur policy load --delete root delete-sync-lob_cicd.yml
+
 - !delete
   record: !policy DemoVault/LOB_CICD
 - !delete

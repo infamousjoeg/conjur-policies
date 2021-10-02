@@ -1,0 +1,13 @@
+# conjur policy load root grants_authn.yml
+
+# Grant the gcp/secret-users group ability to use the authn-gcp authenticator web service
+- !grant
+  role: !group conjur/authn-gcp/apps
+  member: !group gcp/secret-users
+
+# Grant the aws secret-users groups ability to use the authn-aws authenticator web service
+- !grant
+  role: !group conjur/authn-iam/prod/clients
+  members:
+    - !group cloud/aws/ec2/secret-users
+    - !group cloud/aws/lambda/secret-users

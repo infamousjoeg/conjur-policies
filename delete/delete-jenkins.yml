@@ -1,3 +1,4 @@
----
+# conjur policy load --delete jenkins delete-jenkins.yml
+
 - !delete
-  record: !host conjur/authn-jwt/jenkins/cybr-cli
+  record: !host jenkins/cybr-cli

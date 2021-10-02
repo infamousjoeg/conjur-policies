@@ -17,18 +17,18 @@
 
 * /
   * `root` policy files split by resource type
-* authn
+* [authn](authn)
   * Authenticator web service policies
-* cd
+* [cd](cd)
   * Continuous delivery policies
-* ci
+* [ci](ci)
   * Continuous improvement policies
-* cloud
+* [cloud](cloud)
   * Cloud provider policies
-* delete
+* [delete](delete)
   * Delete records policy templates
-* other
-  * Miscellaneous policies for demonstrations
+* [grants](grants)
+  * Grant policies to add members to groups for root branch
 
 ## License
 

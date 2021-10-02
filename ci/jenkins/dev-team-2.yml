@@ -1,0 +1,23 @@
+# conjur policy load jenkins dev-team-2.yml
+
+- !policy
+  id: dev-team-2
+  owner: !group jenkins/admins
+  annotations:
+    description: Development Team 2
+    jenkins: true
+  body:
+    # Create secret variables using collection
+    - &variables
+      - !variable maven/url
+      - !variable maven/username
+      - !variable maven/password
+    
+    # Create host/ci/jenkins/dev-team-2 host identity
+    - !host
+
+    # Permit host identity to retrieve secrets
+    - !permit
+      role: !host
+      privileges: [ read, execute ]
+      resource: *variables

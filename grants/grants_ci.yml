@@ -1,0 +1,20 @@
+# conjur policy load root grants_ci.yml
+
+# Grant jenkins host identities to Windows Service Accounts consumer group
+- !grant
+  role: !group DemoVault/LOB_CI/D-Win-SvcAccts/delegation/consumers
+  members:
+    - !group jenkins/global
+    - !group jenkins/projects/global
+# Grant jenkins dev-team-1 host identities to AWS Access Keys for CI-Dev1 consumer group
+- !grant
+  role: !group DemoVault/LOB_CI/D-CI-Dev1-AWS-AccessKeys/delegation/consumers
+  members:
+    - !host jenkins/dev-team-1
+    - !group jenkins/projects/dev-team-1
+# Grant jenkins dev-team-1 host identities to AWS Access Keys for CI-Dev1 consumer group
+- !grant
+  role: !group DemoVault/LOB_CI/D-CI-Dev2-AWS-AccessKeys/delegation/consumers
+  members:
+    - !host jenkins/dev-team-2
+    - !group jenkins/projects/dev-team-2

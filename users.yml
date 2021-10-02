@@ -1,8 +1,30 @@
 # conjur policy load root users.yml
 
 # To add users to admin group, update grants.yml policy file
-- !user joe
-- !user rob
-- !user andrew
-- !user evan
-- !user james
+- !user
+  id: joe
+  annotations:
+    first_name: Joe
+    last_name: Garcia
+    full_name: Joe Garcia
+    email: joe.garcia@cyberark.com
+    title: DevOps Security Engineer
+    company: CyberArk
+- !user
+  id: darren
+  annotations:
+    first_name: Darren
+    last_name: Khan
+    full_name: Darren Khan
+    email: darren.khan@cyberark.com
+    title: Senior DevSecOps SME
+    company: CyberArk
+- !user
+  id: mark
+  annotations:
+    first_name: Mark
+    last_name: Hurter
+    full_name: Mark Hurter
+    email: mark.hurter@cyberark.com
+    title: DevSecOps Sales Overlay
+    company: CyberArk

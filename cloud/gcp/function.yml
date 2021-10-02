@@ -1,0 +1,42 @@
+# conjur policy load gcp function.yml
+
+- !policy
+  id: function
+  owner: gcp/admins
+  annotations:
+    description: GCP Cloud Run Functions policy
+  body:
+    # Array of secret variables to create
+    ## They will be created with no secret value
+    ## Must be initialized with value separately
+    - &variables
+      - !variable db_username
+      - !variable db_password
+
+    - !group
+      id: secret-users
+      annotations:
+        description: Allowed to read & execute secrets
+        editable: "true"
+
+    # The authn-gcp annotations below are required for verifying 
+    ## our trust of the host identity.
+    ## The `audience` claim of the generated JWT will contain the 
+    ## host identity and authn-gcp will use the below annotations
+    ## to validate trust.
+    - !host
+      id: project2
+      annotations:
+        description: Host identity for GCP Cloud Run Function
+        authn-gcp/service-account-id: 108795798766768432312
+        authn-gcp/service-account-email: authn-gcp@decisive-unison-321320.iam.gserviceaccount.com
+    
+    - !grant
+      role: !group secret-users
+      members:
+        - !host project2
+    
+    - !permit
+      role: !group secret-users
+      privileges: [ read, execute ]
+      resource: *variables

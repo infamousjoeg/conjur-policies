@@ -1,0 +1,25 @@
+# conjur policy load ci jenkins.yml
+
+- !policy
+  id: jenkins
+  annotations:
+    jenkins: true
+  body:
+    # Create jenkins/admins group
+    - !group
+      id: admins
+      annotations:
+        description: Owner of jenkins branch policies
+        editable: "true"
+
+    # Grant conjur-admins to be jenkins/admins
+    - !grant
+      role: !group admins
+      members:
+        - !group /conjur-admins
+
+    # Create host/ci/jenkins/controller host identity
+    - !host
+      id: controller
+      annotations:
+        description: Global host identity for Jenkins Controller

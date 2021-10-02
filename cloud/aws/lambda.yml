@@ -1,0 +1,29 @@
+# conjur policy load aws lambda.yml
+
+- !policy
+  id: lambda
+  owner: aws/admins
+  annotations:
+    aws: true
+  body:
+    - &variables
+      - !variable database/username
+      - !variable database/password
+
+    - !group 
+      id: secret-users
+      annotations:
+        description: Allowed to read & execute secrets
+        editable: "true"
+
+    - !host 735280068473/ConjurAWSRole
+
+    - !grant
+      role: !group secret-users
+      members:
+        - !host 735280068473/ConjurAWSRole
+
+    - !permit
+      role: !group secret-users
+      privileges: [ read, execute ]
+      resource: *variables

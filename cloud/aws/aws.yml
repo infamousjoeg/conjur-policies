@@ -1,0 +1,20 @@
+# conjur policy load cloud aws.yml
+
+- !policy
+  id: aws
+  annotations:
+    description: Base policy for children AWS service policies
+    aws: true
+  body:
+    # Create aws/admins group
+    - !group
+      id: admins
+      annotations:
+        description: Owner of AWS branch policies
+        editable: "true"
+
+    # Grant conjur-admins to be aws/admins
+    - !grant
+      role: !group admins
+      members:
+        - !group /conjur-admins

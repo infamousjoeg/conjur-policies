@@ -1,0 +1,42 @@
+# conjur policy load gcp compute.yml
+
+- !policy
+  id: compute
+  owner: gcp/admins
+  annotations:
+    description: GCP Compute Engine VMs policy
+  body:
+    # Array of secret variables to create
+    ## They will be created with no secret value
+    ## Must be initialized with value separately
+    - &variables
+      - !variable db_username
+      - !variable db_password
+
+    - !group
+      id: secret-users
+      annotations:
+        description: Allowed to read & execute secrets
+        editable: "true"
+
+    # The authn-gcp annotations below are required for verifying 
+    ## our trust of the host identity.
+    ## The `audience` claim of the generated JWT will contain the 
+    ## host identity and authn-gcp will use the below annotations
+    ## to validate trust.
+    - !host
+      id: project1
+      annotations:
+        description: Host identity for GCP Compute Engine VM
+        authn-gcp/service-account-id: 113765159713602081800
+        authn-gcp/service-account-email: 36828818583-compute@developer.gserviceaccount.com
+    
+    - !grant
+      role: !group secret-users
+      members:
+        - !host project1
+    
+    - !permit
+      role: !group secret-users
+      privileges: [ read, execute ]
+      resource: *variables

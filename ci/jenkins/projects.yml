@@ -1,0 +1,39 @@
+# conjur policy load jenkins dev-team-1.yml
+
+- !policy
+  id: projects
+  owner: !group jenkins/admins
+  annotations:
+    description: Projects that do not fall under a folder within Jenkins
+    jenkins: true
+  body:
+    # Create secret variables using collection
+    - &cybr-cli
+      - !variable pas/hostname
+      - !variable pas/username
+      - !variable pas/password
+      - !variable ccp/hostname
+      - !variable ccp/client-cert
+      - !variable ccp/client-key
+    - &global-retrieve-secrets
+      - !variable artifactory/url
+      - !variable artifactory/username
+      - !variable artifactory/password
+    
+    # Create host/ci/jenkins/cybr-cli host identity
+    - !host
+      id: cybr-cli
+      annotations:
+        project_url: "https://github.com/infamousjoeg/cybr-cli"
+
+    # Permit host identity to retrieve cybr-cli secrets
+    - !permit
+      role: !host cybr-cli
+      privileges: [ read, execute ]
+      resource: *cybr-cli
+
+    # Permit host/ci/jenkins/controller identity to retrieve global secrets
+    - !permit
+      role: !host jenkins/controller
+      privileges: [ read, execute ]
+      resource: *global-retrieve-secrets

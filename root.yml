@@ -1,18 +1,21 @@
 # conjur policy load root root.yml
 
-# PKI Service policy branch
 - !policy
-  id: pki
-  owner: !host pki-service
+  id: ci
+  annotations:
+    description: All continuous improvement tooling policies
 
-# Ansible Tower policy branch
 - !policy
-  id: tower
+  id: cd
+  annotations:
+    description: All continuous delivery tooling policies
 
-# Postgres Secretless policy branch
 - !policy
-  id: secretless-demo
+  id: cloud
+  annotations:
+    description: All cloud provider policies
 
-# Jenkins policy branch
 - !policy
-  id: jenkins
+  id: projects
+  annotations:
+    description: All project-based policies for COTS and in-house applications

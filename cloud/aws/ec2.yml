@@ -1,0 +1,31 @@
+# conjur policy load aws ec2.yml
+
+- !policy
+  id: ec2
+  owner: aws/admins
+  annotations:
+    aws: true
+  body:
+    - &variables
+      - !variable psql/db01/address
+      - !variable psql/db01/username
+      - !variable psql/db01/password
+      - !variable psql/db01/db-name
+
+    - !group
+      id: secret-users
+      annotations:
+        description: Allowed to read & execute secrets
+        editable: "true"
+
+    - !host 735280068473/ConjurAWSRoleEC2
+
+    - !grant
+      role: !group secret-users
+      members:
+        - !host 735280068473/ConjurAWSRoleEC2
+
+    - !permit
+      role: !group secret-users
+      privileges: [ read, execute ]
+      resource: *variables

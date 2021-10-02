@@ -1,0 +1,4 @@
+# conjur policy load --delete root delete-Sync_PASAAS-PVWA.yml
+
+- !delete
+  record: !host Sync_PASAAS-PVWA
