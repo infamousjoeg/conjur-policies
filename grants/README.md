@@ -40,3 +40,4 @@ A `!grant` is the same as adding a member to a security group in Active Director
   * Auditors
 * Vault Conjur Synchronizer consumer groups
 * Vault Conjur Synchronizer admin groups
+* Authenticator groups
