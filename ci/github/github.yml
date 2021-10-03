@@ -1,0 +1,32 @@
+# conjur policy load ci github.yml
+
+- !policy
+  id: github
+  body:
+    - &variables
+      - !variable username
+      - !variable token
+
+    # Create group for admins
+    - !group
+      id: admins
+      annotations:
+        description: Allows full access to all policies on github branch.
+        editable: "true"
+
+    # Grant conjur-admins to be jenkins/admins
+    - !grant
+      role: !group admins
+      members:
+        - !group /conjur-admins
+
+    - !group 
+      id: secret-users
+      annotations:
+        description: Allows using secret variables loaded through the github policy.
+        editable: "true"
+
+    - !permit
+      role: !group secret-users
+      privileges: [ read, execute ]
+      resources: *variables

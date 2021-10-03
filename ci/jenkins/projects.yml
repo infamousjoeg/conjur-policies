@@ -1,24 +1,24 @@
-# conjur policy load jenkins dev-team-1.yml
+# conjur policy load jenkins projects.yml
 
 - !policy
   id: projects
   owner: !group jenkins/admins
   annotations:
-    description: Projects that do not fall under a folder within Jenkins
+    description: Projects that do not fall under a folder within Jenkins or project-specific host identities for authn-jwt/jenkins authentication.
     jenkins: true
   body:
     # Create secret variables using collection
-    - &cybr-cli
-      - !variable pas/hostname
-      - !variable pas/username
-      - !variable pas/password
-      - !variable ccp/hostname
-      - !variable ccp/client-cert
-      - !variable ccp/client-key
-    - &global-retrieve-secrets
-      - !variable artifactory/url
-      - !variable artifactory/username
-      - !variable artifactory/password
+    # - &cybr-cli
+    #   - !variable pas/hostname
+    #   - !variable pas/username
+    #   - !variable pas/password
+    #   - !variable ccp/hostname
+    #   - !variable ccp/client-cert
+    #   - !variable ccp/client-key
+    # - &global-retrieve-secrets
+    #   - !variable artifactory/url
+    #   - !variable artifactory/username
+    #   - !variable artifactory/password
     
     # Create host/ci/jenkins/cybr-cli host identity
     - !host
@@ -27,13 +27,62 @@
         project_url: "https://github.com/infamousjoeg/cybr-cli"
 
     # Permit host identity to retrieve cybr-cli secrets
-    - !permit
-      role: !host cybr-cli
-      privileges: [ read, execute ]
-      resource: *cybr-cli
+    # - !permit
+    #   role: !host cybr-cli
+    #   privileges: [ read, execute ]
+    #   resource: *cybr-cli
 
     # Permit host/ci/jenkins/controller identity to retrieve global secrets
-    - !permit
-      role: !host jenkins/controller
-      privileges: [ read, execute ]
-      resource: *global-retrieve-secrets
+    # - !permit
+    #   role: !host jenkins/controller
+    #   privileges: [ read, execute ]
+    #   resource: *global-retrieve-secrets
+
+    # Group of hosts that can authenticate using this JWT Authenticator
+    - !group
+
+    # Create a collection of hosts for authn-jwt/jenkins authentication
+    - &hosts
+      - !host
+        id: Test-Global-Secret-Retrieval
+        annotations:
+          description: Freestyle project in Jenkins named Test-Global-Secret-Retrieval.
+          project_url: na
+          authn-jwt/jenkins/jenkins_pronoun: Project
+      - !host
+        id: Test-Secret-Retrieval-1
+        annotations:
+          description: Freestyle project in Jenkins named Test-Secret-Retrieval-1 in the Dev-Team-1 folder.
+          project_url: na
+          authn-jwt/jenkins/jenkins_parent_name: Dev-Team-1
+          authn-jwt/jenkins/jenkins_pronoun: Project
+      - !host
+        id: cybr-cli
+        annotations:
+          description: Pipeline project in Jenkins named cybr-cli.
+          project_url: "https://github.com/infamousjoeg/cybr-cli"
+          authn-jwt/jenkins/jenkins_pronoun: Pipeline
+          authn-jwt/jenkins/jenkins_task_noun: Build
+
+      # Grant all hosts in collection above to be members of projects group
+      - !grant
+        role: !group
+        members: *hosts
+      
+      # Create a group for dev-team-1 project hosts
+      - !group
+        id: dev-team-1
+        annotations:
+          editable: "yes"
+      
+      # Add dev-team-1 projects to dev-team-1 group
+      - !grant
+        role: !group dev-team-1
+        members:
+          - !host Test-Secret-Retrieval-1
+      
+      # Create a group for dev-team-2 project hosts
+      - !group
+        id: dev-team-2
+        annotations:
+          editable: "yes"

@@ -4,19 +4,19 @@
 - !grant
   role: !group DemoVault/LOB_CD/D-CD-Ops1-AWS-Keypairs/delegation/consumers
   members:
-    - !host ansible/ops-team-1
+    - !host cd/ansible/ops-team-1
 # Grant ansible ops-team-1 host identity to AWS Access Keys for CD-Ops1 consumer group
 - !grant
   role: !group DemoVault/LOB_CD/D-CD-Ops1-AWS-AccessKeys/delegation/consumers
   members:
-    - !host ansible/ops-team-1
+    - !host cd/ansible/ops-team-1
 # Grant ansible ops-team-2 host identity to AWS Keypair for CD-Ops2 consumer group
 - !grant
   role: !group DemoVault/LOB_CD/D-CD-Ops2-AWS-Keypairs/delegation/consumers
   members:
-    - !host ansible/ops-team-2
+    - !host cd/ansible/ops-team-2
 # Grant ansible ops-team-2 host identity to AWS Access Keys for CD-Ops2 consumer group
 - !grant
   role: !group DemoVault/LOB_CD/D-CD-Ops2-AWS-AccessKeys/delegation/consumers
   members:
-    - !host ansible/ops-team-2
+    - !host cd/ansible/ops-team-2

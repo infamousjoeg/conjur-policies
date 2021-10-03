@@ -1,0 +1,46 @@
+# conjur policy load github actions.yml
+
+- !policy
+  id: actions
+  owner: github/admins
+  annotations:
+    description: GitHub Actions resources and secret variables
+  body:
+    # Create a variable collection for easy scaling
+    - &variables
+      # Create a variable for the Conjur URL to mask the service location
+      - !variable
+        id: conjur/url
+        annotations:
+          description: The service base URL for Conjur's web service
+
+    # Create collection of hosts for easy group membership granting
+    - &hosts
+      # Create host identity for cybr-cli repository
+      - !host
+        id: cybr-cli
+        annotations:
+          project_url: "https://github.com/infamousjoeg/cybr-cli"
+      # Create host identity for conceal repository
+      - !host
+        id: conceal
+        annotations:
+          project_url: "https://github.com/infamousjoeg/conceal"
+    
+    # Create ci/github/actions/secret-users group
+    - !group
+      id: secret-users
+      annotations:
+        description: Allows using secret variables loaded through the actions policy.
+        editable: "true"
+
+    # Grant host collection as members of group
+    - !grant
+      role: !group secret-users
+      members: *hosts
+
+    # Permit secret-users group to access variables
+    - !permit
+      role: !group secret-users
+      privileges: [ read, execute ]
+      resources: *variables

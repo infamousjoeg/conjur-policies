@@ -10,6 +10,7 @@
     email: joe.garcia@cyberark.com
     title: DevOps Security Engineer
     company: CyberArk
+    cyberark: true
 - !user
   id: darren
   annotations:
@@ -19,6 +20,7 @@
     email: darren.khan@cyberark.com
     title: Senior DevSecOps SME
     company: CyberArk
+    cyberark: true
 - !user
   id: mark
   annotations:
@@ -28,3 +30,4 @@
     email: mark.hurter@cyberark.com
     title: DevSecOps Sales Overlay
     company: CyberArk
+    cyberark: true

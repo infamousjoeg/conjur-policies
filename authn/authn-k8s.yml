@@ -1,5 +1,5 @@
-# k8s-authenticator-webservice.yml
----
+# conjur policy load root authn-k8s.yml
+
 # =================================================
 # == Enroll a Kubernetes authentication service
 # =================================================
@@ -7,26 +7,26 @@
   id: conjur/authn-k8s/conjur-demo
   annotations:
     description: K8s Authenticator policy definitions
-
+    kubernetes: true
   body:
-  # vars for ocp/k8s api url & access creds
-  - !variable kubernetes/service-account-token
-  - !variable kubernetes/ca-cert
-  - !variable kubernetes/api-url
+    # vars for ocp/k8s api url & access creds
+    - !variable kubernetes/service-account-token
+    - !variable kubernetes/ca-cert
+    - !variable kubernetes/api-url
 
-  # vars for CA for this service ID
-  - !variable ca/cert
-  - !variable ca/key
+    # vars for CA for this service ID
+    - !variable ca/cert
+    - !variable ca/key
 
-  - !webservice
-    annotations:
-      description: Authenticator service for K8s cluster conjur-demo
+    - !webservice
+      annotations:
+        description: Authenticator service for K8s cluster conjur-demo
 
-  # Create 'consumers' group
-  - !group consumers
+    # Create 'consumers' group
+    - !group consumers
 
-  # Grant consumers group role authentication privileges
-  - !permit
-    role: !group consumers
-    privilege: [ read, authenticate ]
-    resource: !webservice
+    # Grant consumers group role authentication privileges
+    - !permit
+      role: !group consumers
+      privilege: [ read, authenticate ]
+      resource: !webservice

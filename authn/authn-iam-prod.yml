@@ -1,5 +1,9 @@
+# conjur policy load root authn-iam-prod.yml
+
 - !policy
   id: conjur/authn-iam/prod
+  annotations:
+    aws: true
   body:
     - !webservice
 

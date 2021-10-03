@@ -11,3 +11,8 @@
   members:
     - !group cloud/aws/ec2/secret-users
     - !group cloud/aws/lambda/secret-users
+
+# Grant the jenkins projects group to use the authn-jwt/jenkins authenticator web service
+- !grant
+  role: !group conjur/authn-jwt/jenkins/consumers
+  member: !group ci/jenkins/projects

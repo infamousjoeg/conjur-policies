@@ -2,7 +2,9 @@
   id: conjur/authn-jwt/jenkins
   annotations:
     description: JWT Authenticator web service for Jenkins
+    jenkins: true
   body:
+    # Create the conjur/authn-jwt/jenkins web service
     - !webservice
 
     # Optional: Uncomment any or all of the following variables:
@@ -38,50 +40,32 @@
       id: jwks-uri
       annotations:
         description: A JSON Web Key Set (JWKS) URI. If the JWKS vendor provides both a jwks-uri and an equivalent provider-uri, you can use the provider-uri which has an easier interface to work with.
-    
+
     # Group of hosts that can authenticate using this JWT Authenticator
-    - !group 
+    - !group
       id: consumers
       annotations:
-        description: Group of hosts that can authenticate using the authn-jwt/jenkins authenticator.
+        description: Allows authentication through authn-jwt/jenkins web service.
+        editable: "true"
     
+    # Permit the consumers group to authenticate to the authn-jwt/jenkins web service
     - !permit
       role: !group consumers
       privilege: [ read, authenticate ]
       resource: !webservice
-    
-    - &hosts
-      - !host
-        id: Test-Global-Secret-Retrieval
-        annotations:
-          description: Freestyle project in Jenkins named Test-Global-Secret-Retrieval.
-          authn-jwt/jenkins/jenkins_pronoun: Project
-      - !host
-        id: Test-Secret-Retrieval-1
-        annotations:
-          description: Freestyle project in Jenkins named Test-Secret-Retrieval-1 in the Dev-Team-1 folder.
-          authn-jwt/jenkins/jenkins_parent_name: Dev-Team-1
-          authn-jwt/jenkins/jenkins_pronoun: Project
-      - !host
-        id: cybr-cli
-        annotations:
-          description: Pipeline project in Jenkins named cybr-cli.
-          authn-jwt/jenkins/jenkins_pronoun: Pipeline
-          authn-jwt/jenkins/jenkins_task_noun: Build
 
-    - !grant
-      role: !group consumers
-      members: *hosts
-
+    # Create a web service for checking authn-jwt/jenkins status
     - !webservice
       id: status
 
-    # Group of users who can check the status of the JWT Authenticator
+    # Group of users who can check the status of authn-jwt/jenkins
     - !group
       id: operators
       annotations:
         description: Group of users that can check the status of the authn-jwt/jenkins authenticator.
+        editable: "true"
     
+    # Permit group to check the status of authn-jwt/jenkins
     - !permit
       role: !group operators
       privilege: read

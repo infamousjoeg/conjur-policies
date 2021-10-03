@@ -1,0 +1,22 @@
+# conjur policy load ansible ops-team-1.yml
+
+- !policy
+  id: ops-team-1
+  owner: !group ansible/admins
+  annotations:
+    description: Ops Team 1 secrets and host identity
+    ansible: true
+  body:
+    # - &variables
+    #   - !variable aws/access_key_id
+    #   - !variable aws/secret_access_key
+
+    # host/cd/ansible/ops-team-1
+    - !host
+      annotations:
+        ansible: true
+
+    # - !permit
+    #   role: !host
+    #   privileges: [ read, execute ]
+    #   resources: *variables

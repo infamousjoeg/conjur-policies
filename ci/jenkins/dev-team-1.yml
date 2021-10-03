@@ -8,17 +8,17 @@
     jenkins: true
   body:
     # Create secret variables using collection
-    - &variables
-      - !variable maven/url
-      - !variable maven/username
-      - !variable maven/password
+    # - &variables
+    #   - !variable maven/url
+    #   - !variable maven/username
+    #   - !variable maven/password
     
     # Create host/ci/jenkins/dev-team-1 host identity
     - !host
 
     # Permit host identity to retrieve secrets
-    - !permit
-      role: !host
-      privileges: [ read, execute ]
-      resource: *variables
+    # - !permit
+    #   role: !host
+    #   privileges: [ read, execute ]
+    #   resource: *variables
 

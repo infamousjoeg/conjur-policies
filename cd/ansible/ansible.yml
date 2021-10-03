@@ -1,0 +1,20 @@
+# conjur policy load cd ansible.yml
+
+- !policy
+  id: ansible
+  annotations:
+    description: Resources and secret definitions for Ansible Automation Platform.
+    ansible: true
+  body:
+  # Create group for admins
+  - !group
+    id: admins
+    annotations:
+      description: Owner of ansible branch policies
+      editable: "true"
+
+    # Grant conjur-admins to be ansible/admins
+    - !grant
+      role: !group admins
+      members:
+        - !group /conjur-admins
