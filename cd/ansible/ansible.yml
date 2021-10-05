@@ -6,12 +6,12 @@
     description: Resources and secret definitions for Ansible Automation Platform.
     ansible: true
   body:
-  # Create group for admins
-  - !group
-    id: admins
-    annotations:
-      description: Owner of ansible branch policies
-      editable: "true"
+    # Create group for admins - cd/ansible/admins
+    - !group
+      id: admins
+      annotations:
+        description: Owner of ansible branch policies
+        editable: "true"
 
     # Grant conjur-admins to be ansible/admins
     - !grant
