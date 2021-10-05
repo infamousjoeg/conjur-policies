@@ -2,7 +2,7 @@
 
 - !policy
   id: compute
-  owner: gcp/admins
+  owner: cloud/gcp/admins
   annotations:
     description: GCP Compute Engine VMs policy
   body:

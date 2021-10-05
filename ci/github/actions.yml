@@ -2,7 +2,7 @@
 
 - !policy
   id: actions
-  owner: github/admins
+  owner: ci/github/admins
   annotations:
     description: GitHub Actions resources and secret variables
   body:

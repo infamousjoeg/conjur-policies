@@ -2,7 +2,7 @@
 
 - !policy
   id: ec2
-  owner: aws/admins
+  owner: cloud/aws/admins
   annotations:
     aws: true
   body:
