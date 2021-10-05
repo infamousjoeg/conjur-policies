@@ -2,7 +2,7 @@
 
 - !policy
   id: dev-team-1
-  owner: !group ci/jenkins/admins
+  owner: !group admins
   annotations:
     description: Development Team 1
     jenkins: true

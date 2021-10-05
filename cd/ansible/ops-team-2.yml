@@ -2,7 +2,7 @@
 
 - !policy
   id: ops-team-2
-  owner: !group cd/ansible/admins
+  owner: !group admins
   annotations:
     description: Ops Team 2 secrets and host identity
     ansible: true

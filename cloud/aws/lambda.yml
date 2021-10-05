@@ -2,7 +2,7 @@
 
 - !policy
   id: lambda
-  owner: cloud/aws/admins
+  owner: admins
   annotations:
     aws: true
   body:
