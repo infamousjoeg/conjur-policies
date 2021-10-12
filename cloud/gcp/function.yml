@@ -2,7 +2,7 @@
 
 - !policy
   id: function
-  owner: admins
+  owner: !group admins
   annotations:
     description: GCP Cloud Run Functions policy
   body:

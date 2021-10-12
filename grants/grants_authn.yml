@@ -3,7 +3,9 @@
 # Grant the gcp/secret-users group ability to use the authn-gcp authenticator web service
 - !grant
   role: !group conjur/authn-gcp/apps
-  member: !group gcp/secret-users
+  members:
+    - !group cloud/gcp/compute/secret-users
+    - !group cloud/gcp/function/secret-users
 
 # Grant the aws secret-users groups ability to use the authn-aws authenticator web service
 - !grant

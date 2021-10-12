@@ -2,7 +2,7 @@
 
 - !policy
   id: projects
-  owner: !group jenkins/admins
+  owner: !group admins
   annotations:
     description: Projects that do not fall under a folder within Jenkins or project-specific host identities for authn-jwt/jenkins authentication.
     jenkins: true
@@ -21,10 +21,10 @@
     #   - !variable artifactory/password
     
     # Create host/ci/jenkins/cybr-cli host identity
-    - !host
-      id: cybr-cli
-      annotations:
-        project_url: "https://github.com/infamousjoeg/cybr-cli"
+    # - !host
+    #   id: cybr-cli
+    #   annotations:
+    #     project_url: "https://github.com/infamousjoeg/cybr-cli"
 
     # Permit host identity to retrieve cybr-cli secrets
     # - !permit
