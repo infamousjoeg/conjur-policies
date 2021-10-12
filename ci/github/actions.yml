@@ -26,6 +26,10 @@
         id: conceal
         annotations:
           project_url: "https://github.com/infamousjoeg/conceal"
+      - !host
+        id: conjur-action
+        annotations:
+          project_url: "https://github.com/infamousjoeg/conjur-action"
     
     # Create ci/github/actions/secret-users group
     - !group

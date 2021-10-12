@@ -6,6 +6,7 @@
   members:
     - !group ci/jenkins/controller
     - !group ci/jenkins/projects
+    - !group ci/github/actions/secret-users
 # Grant jenkins dev-team-1 host identities to AWS Access Keys for CI-Dev1 consumer group
 - !grant
   role: !group DemoVault/LOB_CI/D-CI-Dev1-AWS-AccessKeys/delegation/consumers
