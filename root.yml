@@ -19,3 +19,8 @@
   id: projects
   annotations:
     description: All project-based policies for COTS and in-house applications
+
+- !policy
+  id: web
+  annotations:
+    description: All web application policies

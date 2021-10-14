@@ -1,0 +1,31 @@
+# conjur policy load root authn/authn-oidc-webapp.yml
+
+- !policy
+  id: conjur/authn-oidc/webapp
+  annotations:
+    description: OIDC authenticator web service for conjur-oidc-demo web app
+  body:
+    - !webservice
+      annotations:
+        description: Authentication service for webapp, based on OpenID Connect.
+    
+    - !variable
+      id: provider_uri
+      annotations:
+        description: The URI of the OIDC provider
+    
+    - !variable
+      id: id-token-user-property
+      annotations:
+        description: The field of the ID Token that indicates the Conjur username
+    
+    - !group
+      id: users
+      annotations:
+        description: Group of users who can authenticate using the authn-oidc/webapp authenticator
+        editable: "true"
+    
+    - !permit
+      role: !group users
+      privileges: [ read, authenticate ]
+      resource: !webservice

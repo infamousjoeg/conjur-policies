@@ -1,0 +1,26 @@
+# conjur policy load web web/conjur-oidc-demo.yml
+
+- !policy
+  id: conjur-oidc-demo
+  annotations:
+    project_url: "https://github.com/infamousjoeg/conjur-oidc-demo"
+    web_app_url: "https://conjur-oidc-demo.herokuapp.com"
+  body:
+    # Define a secret variable
+    - !variable api-key
+
+    # Define a group for users
+    - !group
+      id: users
+      annotations:
+        editable: "true"
+    
+    - !grant
+      role: !group users
+      members:
+        - !user /joe
+    
+    - !permit
+      role: !group users
+      privileges: [ read, execute ]
+      resource: !variable api-key
