@@ -2,20 +2,20 @@
 
 # Grant jenkins host identities to Windows Service Accounts consumer group
 - !grant
-  role: !group DemoVault/LOB_CI/D-Win-SvcAccts/delegation/consumers
+  role: !group SyncVault/LOB_CI/D-Win-SvcAccts/delegation/consumers
   members:
-    - !group ci/jenkins/controller
+    - !host ci/jenkins/controller
     - !group ci/jenkins/projects
     - !group ci/github/actions/secret-users
 # Grant jenkins dev-team-1 host identities to AWS Access Keys for CI-Dev1 consumer group
 - !grant
-  role: !group DemoVault/LOB_CI/D-CI-Dev1-AWS-AccessKeys/delegation/consumers
+  role: !group SyncVault/LOB_CI/D-CI-Dev1-AWS-AccessKeys/delegation/consumers
   members:
     - !host ci/jenkins/dev-team-1
     - !group ci/jenkins/projects/dev-team-1
 # Grant jenkins dev-team-1 host identities to AWS Access Keys for CI-Dev1 consumer group
 - !grant
-  role: !group DemoVault/LOB_CI/D-CI-Dev2-AWS-AccessKeys/delegation/consumers
+  role: !group SyncVault/LOB_CI/D-CI-Dev2-AWS-AccessKeys/delegation/consumers
   members:
     - !host ci/jenkins/dev-team-2
     - !group ci/jenkins/projects/dev-team-2

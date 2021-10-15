@@ -1,7 +1,7 @@
 # conjur policy load root grants_vcs.yml
 
-# Grant refactr host identity to DemoVault admin group
+# Grant refactr host identity to SyncVault admin group
 - !grant
-  role: !group DemoVault-admins
+  role: !group SyncVault-admins
   members:
-    - !host refactr
+    - !host ci/refactr/onboarding

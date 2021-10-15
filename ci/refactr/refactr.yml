@@ -1,1 +1,17 @@
 # conjur policy load ci refactr.yml
+
+- !policy
+  id: refactr
+  body:
+    # Create refactr/admins group
+    - !group
+      id: admins
+      annotations:
+        description: Owner of refactr branch policies
+        editable: "true"
+
+    # Grant conjur-admins to be jenkins/admins
+    - !grant
+      role: !group admins
+      members:
+        - !group /conjur-admins

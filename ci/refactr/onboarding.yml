@@ -1,1 +1,12 @@
 # conjur policy load refactr onboarding.yml
+
+- !policy
+  id: onboarding
+  owner: !group admins
+  annotations:
+    description: Defines resources for automated onboarding within the Refactr platform
+  body:
+    # Create host for Refactr platform to authenticate using for automated onboarding
+    - !host
+      annotations:
+        description: Used for API access by Refactr platform automation
