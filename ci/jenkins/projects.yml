@@ -40,40 +40,43 @@
 
     # Group of hosts that can authenticate using this JWT Authenticator
     - !group
+      annotations:
+        editable: "true"
 
-    # Create a collection of hosts for authn-jwt/jenkins authentication
-    - &hosts
-      - !host
-        id: Test-Global-Secret-Retrieval
-        annotations:
-          description: Freestyle project in Jenkins named Test-Global-Secret-Retrieval.
-          project_url: na
-          authn-jwt/jenkins/jenkins_pronoun: Project
-      - !host
-        id: Test-Secret-Retrieval-1
-        annotations:
-          description: Freestyle project in Jenkins named Test-Secret-Retrieval-1 in the Dev-Team-1 folder.
-          project_url: na
-          authn-jwt/jenkins/jenkins_parent_name: Dev-Team-1
-          authn-jwt/jenkins/jenkins_pronoun: Project
-      - !host
-        id: cybr-cli
-        annotations:
-          description: Pipeline project in Jenkins named cybr-cli.
-          project_url: "https://github.com/infamousjoeg/cybr-cli"
-          authn-jwt/jenkins/jenkins_pronoun: Pipeline
-          authn-jwt/jenkins/jenkins_task_noun: Build
+    - !host
+      id: Test-Global-Secret-Retrieval
+      annotations:
+        description: Freestyle project in Jenkins named Test-Global-Secret-Retrieval.
+        project_url: na
+        authn-jwt/jenkins/jenkins_pronoun: Project
+    - !host
+      id: Test-Secret-Retrieval-1
+      annotations:
+        description: Freestyle project in Jenkins named Test-Secret-Retrieval-1 in the Dev-Team-1 folder.
+        project_url: na
+        authn-jwt/jenkins/jenkins_parent_name: Dev-Team-1
+        authn-jwt/jenkins/jenkins_pronoun: Project
+    - !host
+      id: cybr-cli
+      annotations:
+        description: Pipeline project in Jenkins named cybr-cli.
+        project_url: "https://github.com/infamousjoeg/cybr-cli"
+        authn-jwt/jenkins/jenkins_pronoun: Pipeline
+        authn-jwt/jenkins/jenkins_task_noun: Build
 
       # Grant all hosts in collection above to be members of projects group
       - !grant
         role: !group
-        member: *hosts
+        members:
+          - !host Test-Global-Secret-Retrieval
+          - !host Test-Secret-Retrieval-1
+          - !host cybr-cli
       
       # Create a group for dev-team-1 project hosts
       - !group
         id: dev-team-1
         annotations:
-          editable: "yes"
+          editable: "true"
       
       # Add dev-team-1 projects to dev-team-1 group
       - !grant
@@ -85,4 +88,4 @@
       - !group
         id: dev-team-2
         annotations:
-          editable: "yes"
+          editable: "true"
