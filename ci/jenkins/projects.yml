@@ -67,7 +67,7 @@
       # Grant all hosts in collection above to be members of projects group
       - !grant
         role: !group
-        members: *hosts
+        member: *hosts
       
       # Create a group for dev-team-1 project hosts
       - !group
