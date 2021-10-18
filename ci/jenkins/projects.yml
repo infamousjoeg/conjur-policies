@@ -66,28 +66,28 @@
         authn-jwt/jenkins/jenkins_pronoun: Pipeline
         authn-jwt/jenkins/jenkins_task_noun: Build
 
-      # Grant all hosts in collection above to be members of projects group
-      - !grant
-        role: !group
-        members:
-          - !host Test-Global-Secret-Retrieval
-          - !host Test-Secret-Retrieval-1
-          - !host cybr-cli
-      
-      # Create a group for dev-team-1 project hosts
-      - !group
-        id: dev-team-1
-        annotations:
-          editable: "true"
-      
-      # Add dev-team-1 projects to dev-team-1 group
-      - !grant
-        role: !group dev-team-1
-        members:
-          - !host Test-Secret-Retrieval-1
-      
-      # Create a group for dev-team-2 project hosts
-      - !group
-        id: dev-team-2
-        annotations:
-          editable: "true"
+    # Grant all hosts in collection above to be members of projects group
+    - !grant
+      role: !group
+      members:
+        - !host Test-Global-Secret-Retrieval
+        - !host Test-Secret-Retrieval-1
+        - !host cybr-cli
+    
+    # Create a group for dev-team-1 project hosts
+    - !group
+      id: dev-team-1
+      annotations:
+        editable: "true"
+    
+    # Add dev-team-1 projects to dev-team-1 group
+    - !grant
+      role: !group dev-team-1
+      members:
+        - !host Test-Secret-Retrieval-1
+    
+    # Create a group for dev-team-2 project hosts
+    - !group
+      id: dev-team-2
+      annotations:
+        editable: "true"
