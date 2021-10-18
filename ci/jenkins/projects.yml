@@ -49,6 +49,7 @@
         description: Freestyle project in Jenkins named Test-Global-Secret-Retrieval.
         project_url: na
         authn-jwt/jenkins/jenkins_pronoun: Project
+
     - !host
       id: Test-Secret-Retrieval-1
       annotations:
@@ -56,6 +57,7 @@
         project_url: na
         authn-jwt/jenkins/jenkins_parent_name: Dev-Team-1
         authn-jwt/jenkins/jenkins_pronoun: Project
+
     - !host
       id: cybr-cli
       annotations:
