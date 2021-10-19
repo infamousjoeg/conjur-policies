@@ -14,8 +14,10 @@ pipeline {
     }
     post {
         always {
-            echo "Output from Load Policies script:"
-            sh 'cat ./output'
+            sh '''
+                echo "Output from Load Policies script:"
+                cat ./output
+            '''
         }
     }
 }
