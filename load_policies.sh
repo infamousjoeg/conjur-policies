@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo sudo cybr conjur append-policy -b root -f users.yml
+sudo cybr conjur append-policy -b root -f users.yml
 sudo cybr conjur append-policy -b root -f groups.yml
 sudo cybr conjur append-policy -b root -f grants/grants_user.yml
 sudo cybr conjur append-policy -b cd -f cd/ansible/ansible.yml
