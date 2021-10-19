@@ -46,13 +46,13 @@ pipeline {
                 wget https://github.com/infamousjoeg/cybr-cli/releases/latest/download/linux_cybr -O cybr
                 chmod +x cybr
                 '''
-                sh 'cybr version'
+                sh './cybr version'
             }
         }
 
         stage('Authenticate cybr-cli to Conjur') {
             steps {
-                sh 'cybr conjur logon-non-interactive'
+                sh './cybr conjur logon-non-interactive'
             }
         }
 
