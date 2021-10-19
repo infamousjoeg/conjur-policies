@@ -25,6 +25,10 @@ pipeline {
         }
 
         stage('Create .netrc') {
+            withCredentials([
+                conjurSecretCredential(credentialsId: 'SyncVault-LOB_CI-D-App-Conjur-Policies-Application-ConjurUser-httpsconjur.joegarcia.dev-hostcijenkinsprojectsconjur-policies-username', variable: 'CONJUR_USERNAME'),
+                conjurSecretCredential(credentialsId: 'SyncVault-LOB_CI-D-App-Conjur-Policies-Application-ConjurUser-httpsconjur.joegarcia.dev-hostcijenkinsprojectsconjur-policies-password', variable: 'CONJUR_API_KEY')
+            ])
             steps {
                 sh '''cat << EOF > ~/.netrc
                 machine "$CONJUR_APPLIANCE_URL"/authn
@@ -36,15 +40,19 @@ pipeline {
         }
 
         stage('Install cybr-cli') {
-            sh '''
+            steps {
+                sh '''
                 wget https://github.com/infamousjoeg/cybr-cli/releases/latest/download/linux_cybr -O cybr
                 chmod +x cybr
-            '''
-            sh 'cybr version'
+                '''
+                sh 'cybr version'
+            }
         }
 
         stage('Authenticate cybr-cli to Conjur') {
-            sh 'cybr conjur logon-non-interactive'
+            steps {
+                sh 'cybr conjur logon-non-interactive'
+            }
         }
 
         stage('Load Conjur Policies') {
