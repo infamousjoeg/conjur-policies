@@ -1,33 +1,33 @@
 #!/bin/bash
 
-sudo cybr conjur append-policy -b root -f users.yml
-sudo cybr conjur append-policy -b root -f groups.yml
-sudo cybr conjur append-policy -b root -f grants/grants_user.yml
-sudo cybr conjur append-policy -b cd -f cd/ansible/ansible.yml
-sudo cybr conjur append-policy -b cd/ansible -f cd/ansible/ops-team-1.yml
-sudo cybr conjur append-policy -b cd/ansible -f cd/ansible/ops-team-1=2.yml
-sudo cybr conjur append-policy -b root -f grants/grants_cd.yml
-sudo cybr conjur append-policy -b ci -f ci/jenkins/jenkins.yml
-sudo cybr conjur append-policy -b ci/jenkins -f ci/jenkins/dev-team-1.yml
-sudo cybr conjur append-policy -b ci/jenkins -f ci/jenkins/dev-team-2.yml
-sudo cybr conjur append-policy -b ci/jenkins -f ci/jenkins/projects.yml
-sudo cybr conjur append-policy -b ci -f ci/github/github.yml
-sudo cybr conjur append-policy -b ci/github -f ci/github/actions.yml
-sudo cybr conjur append-policy -b ci -f ci/refactr/refactr.yml
-sudo cybr conjur append-policy -b ci/refactr -f ci/refactr/onboarding.yml
-sudo cybr conjur append-policy -b root -f grants/grants_ci.yml
-sudo cybr conjur append-policy -b cloud -f cloud/aws/aws.yml
-sudo cybr conjur append-policy -b cloud/aws -f cloud/aws/ec2.yml
-sudo cybr conjur append-policy -b cloud/aws -f cloud/aws/lambda.yml
-sudo cybr conjur append-policy -b cloud -f cloud/gcp/gcp.yml
-sudo cybr conjur append-policy -b cloud/gcp -f cloud/gcp/compute.yml
-sudo cybr conjur append-policy -b cloud/gcp -f cloud/gcp/function.yml
-sudo cybr conjur append-policy -b web -f web/conjur-oidc-demo.yml
-sudo cybr conjur append-policy -b root -f authn/authn-gcp.yml
-sudo cybr conjur append-policy -b root -f authn/authn-iam-prod.yml
-sudo cybr conjur append-policy -b root -f authn/authn-jwt-jenkins.yml
-sudo cybr conjur append-policy -b root -f authn/authn-k8s.yml
-sudo cybr conjur append-policy -b root -f authn/authn-oidc-webapp.yml
-sudo cybr conjur append-policy -b root -f authn/seed-generation.yml
-sudo cybr conjur append-policy -b root -f grants/grants_authn.yml
-sudo cybr conjur append-policy -b root -f grants/grants_vcs.yml
+./cybr conjur append-policy -b root -f users.yml
+./cybr conjur append-policy -b root -f groups.yml
+./cybr conjur append-policy -b root -f grants/grants_user.yml
+./cybr conjur append-policy -b cd -f cd/ansible/ansible.yml
+./cybr conjur append-policy -b cd/ansible -f cd/ansible/ops-team-1.yml
+./cybr conjur append-policy -b cd/ansible -f cd/ansible/ops-team-1=2.yml
+./cybr conjur append-policy -b root -f grants/grants_cd.yml
+./cybr conjur append-policy -b ci -f ci/jenkins/jenkins.yml
+./cybr conjur append-policy -b ci/jenkins -f ci/jenkins/dev-team-1.yml
+./cybr conjur append-policy -b ci/jenkins -f ci/jenkins/dev-team-2.yml
+./cybr conjur append-policy -b ci/jenkins -f ci/jenkins/projects.yml
+./cybr conjur append-policy -b ci -f ci/github/github.yml
+./cybr conjur append-policy -b ci/github -f ci/github/actions.yml
+./cybr conjur append-policy -b ci -f ci/refactr/refactr.yml
+./cybr conjur append-policy -b ci/refactr -f ci/refactr/onboarding.yml
+./cybr conjur append-policy -b root -f grants/grants_ci.yml
+./cybr conjur append-policy -b cloud -f cloud/aws/aws.yml
+./cybr conjur append-policy -b cloud/aws -f cloud/aws/ec2.yml
+./cybr conjur append-policy -b cloud/aws -f cloud/aws/lambda.yml
+./cybr conjur append-policy -b cloud -f cloud/gcp/gcp.yml
+./cybr conjur append-policy -b cloud/gcp -f cloud/gcp/compute.yml
+./cybr conjur append-policy -b cloud/gcp -f cloud/gcp/function.yml
+./cybr conjur append-policy -b web -f web/conjur-oidc-demo.yml
+./cybr conjur append-policy -b root -f authn/authn-gcp.yml
+./cybr conjur append-policy -b root -f authn/authn-iam-prod.yml
+./cybr conjur append-policy -b root -f authn/authn-jwt-jenkins.yml
+./cybr conjur append-policy -b root -f authn/authn-k8s.yml
+./cybr conjur append-policy -b root -f authn/authn-oidc-webapp.yml
+./cybr conjur append-policy -b root -f authn/seed-generation.yml
+./cybr conjur append-policy -b root -f grants/grants_authn.yml
+./cybr conjur append-policy -b root -f grants/grants_vcs.yml
