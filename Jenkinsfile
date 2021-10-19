@@ -11,35 +11,6 @@ pipeline {
     }
 
     stages {
-        stage('Configure Conjur Identity') {
-            steps {
-                sh '''cat << EOF > ~/.conjurrc
-                ---
-                account: "$CONJUR_ACCOUNT"
-                plugins: []
-                appliance_url: "$CONJUR_APPLIANCE_URL"
-                cert_file: ""
-                EOF
-                '''
-            }
-        }
-
-        stage('Create .netrc') {
-            steps {
-                withCredentials([
-                conjurSecretCredential(credentialsId: 'SyncVault-LOB_CI-D-App-Conjur-Policies-Application-ConjurUser-httpsconjur.joegarcia.dev-hostcijenkinsprojectsconjur-policies-username', variable: 'CONJUR_USERNAME'),
-                conjurSecretCredential(credentialsId: 'SyncVault-LOB_CI-D-App-Conjur-Policies-Application-ConjurUser-httpsconjur.joegarcia.dev-hostcijenkinsprojectsconjur-policies-password', variable: 'CONJUR_API_KEY')
-                ]) {
-                    sh '''cat << EOF > ~/.netrc
-                    machine "$CONJUR_APPLIANCE_URL"/authn
-                      login "$CONJUR_USERNAME"
-                      password "$CONJUR_API_KEY"
-                    EOF
-                    '''
-                }
-            }
-        }
-
         stage('Install cybr-cli') {
             steps {
                 sh '''
@@ -52,7 +23,12 @@ pipeline {
 
         stage('Authenticate cybr-cli to Conjur') {
             steps {
-                sh './cybr conjur logon-non-interactive'
+                withCredentials([
+                    conjurSecretCredential(credentialsId: 'SyncVault-LOB_CI-D-App-Conjur-Policies-Application-ConjurUser-httpsconjur.joegarcia.dev-hostcijenkinsprojectsconjur-policies-username', variable: 'CONJUR_AUTHN_LOGIN'),
+                    conjurSecretCredential(credentialsId: 'SyncVault-LOB_CI-D-App-Conjur-Policies-Application-ConjurUser-httpsconjur.joegarcia.dev-hostcijenkinsprojectsconjur-policies-password', variable: 'CONJUR_AUTHN_API_KEY')
+                ]) {
+                    sh './cybr conjur logon-non-interactive'
+                }
             }
         }
 
