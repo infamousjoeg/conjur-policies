@@ -25,17 +25,18 @@ pipeline {
         }
 
         stage('Create .netrc') {
-            withCredentials([
+            steps {
+                withCredentials([
                 conjurSecretCredential(credentialsId: 'SyncVault-LOB_CI-D-App-Conjur-Policies-Application-ConjurUser-httpsconjur.joegarcia.dev-hostcijenkinsprojectsconjur-policies-username', variable: 'CONJUR_USERNAME'),
                 conjurSecretCredential(credentialsId: 'SyncVault-LOB_CI-D-App-Conjur-Policies-Application-ConjurUser-httpsconjur.joegarcia.dev-hostcijenkinsprojectsconjur-policies-password', variable: 'CONJUR_API_KEY')
-            ])
-            steps {
-                sh '''cat << EOF > ~/.netrc
-                machine "$CONJUR_APPLIANCE_URL"/authn
-                  login "$CONJUR_USERNAME"
-                  password "$CONJUR_API_KEY"
-                EOF
-                '''
+                ]) {
+                    sh '''cat << EOF > ~/.netrc
+                    machine "$CONJUR_APPLIANCE_URL"/authn
+                      login "$CONJUR_USERNAME"
+                      password "$CONJUR_API_KEY"
+                    EOF
+                    '''
+                }
             }
         }
 
