@@ -19,3 +19,13 @@
   members:
     - !host ci/jenkins/dev-team-2
     - !group ci/jenkins/projects/dev-team-2
+# Grant jenkins conjur-policies host identity to Conjur host identity for loading policy
+- !grant
+  role: !group SyncVault/LOB_CI/D-App-Conjur-Policies/delegation/consumers
+  members:
+    - !host ci/jenkins/projects/conjur-policies
+# Grant jenkins cybr-cli host identity to secrets for cybr-cli pipeline
+- !grant
+  role: !group SyncVault/LOB_CI/D-App-CybrCLI/delegation/consumers
+  members:
+    - !host ci/jenkins/projects/cybr-cli
