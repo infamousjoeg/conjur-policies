@@ -47,24 +47,40 @@
       id: Test-Global-Secret-Retrieval
       annotations:
         description: Freestyle project in Jenkins named Test-Global-Secret-Retrieval.
+        jenkins: true
         project_url: na
         authn-jwt/jenkins/jenkins_pronoun: Project
+        authn-jwt/jenkins/identity: 266e991928f8c7cf155bd54d43d12174-Test-Global-Secret-Retrieval
 
     - !host
       id: Test-Secret-Retrieval-1
       annotations:
         description: Freestyle project in Jenkins named Test-Secret-Retrieval-1 in the Dev-Team-1 folder.
+        jenkins: true
         project_url: na
         authn-jwt/jenkins/jenkins_parent_name: Dev-Team-1
         authn-jwt/jenkins/jenkins_pronoun: Project
+        authn-jwt/jenkins/identity: 266e991928f8c7cf155bd54d43d12174-Test-Secret-Retrieval-1
 
     - !host
       id: cybr-cli
       annotations:
         description: Pipeline project in Jenkins named cybr-cli.
+        jenkins: true
         project_url: "https://github.com/infamousjoeg/cybr-cli"
         authn-jwt/jenkins/jenkins_pronoun: Pipeline
         authn-jwt/jenkins/jenkins_task_noun: Build
+        authn-jwt/jenkins/identity: 266e991928f8c7cf155bd54d43d12174-cybr-cli
+
+    - !host
+      id: conjur-policies
+      annotations:
+        description: Pipeline project in Jenkins to automatically load Conjur policy on change.
+        jenkins: true
+        project_url: "https://github.com/infamousjoeg/conjur-policies"
+        authn-jwt/jenkins/jenkins_pronoun: Pipeline
+        authn-jwt/jenkins/jenkins_task_noun: Build
+        authn-jwt/jenkins/identity: 266e991928f8c7cf155bd54d43d12174-conjur-policies
 
     # Grant all hosts in collection above to be members of projects group
     - !grant
@@ -73,6 +89,7 @@
         - !host Test-Global-Secret-Retrieval
         - !host Test-Secret-Retrieval-1
         - !host cybr-cli
+        - !host conjur-policies
     
     # Create a group for dev-team-1 project hosts
     - !group

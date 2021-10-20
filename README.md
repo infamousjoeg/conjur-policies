@@ -35,6 +35,7 @@
 30. `conjur policy load root authn/seed-generation.yml`
 31. `conjur policy load root grants/grants_authn.yml`
 32. `conjur policy load root grants/grants_vcs.yml`
+33. `conjur policy load root grants/grants_host.yml`
 
 ## Directories
 
