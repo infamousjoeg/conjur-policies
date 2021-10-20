@@ -1,0 +1,6 @@
+# conjur policy load root grants_host.yml
+
+# Grant conjur-policies host admin rights
+- !grant
+  role: !group conjur-admins
+  members: !host ci/jenkins/projects/conjur-policies

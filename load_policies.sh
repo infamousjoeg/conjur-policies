@@ -31,3 +31,4 @@
 ./cybr conjur append-policy -b root -f authn/seed-generation.yml
 ./cybr conjur append-policy -b root -f grants/grants_authn.yml
 ./cybr conjur append-policy -b root -f grants/grants_vcs.yml
+./cybr conjur append-policy -b root -f grants/grants_host.yml
