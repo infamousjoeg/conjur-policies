@@ -34,7 +34,12 @@ pipeline {
 
         stage('Load Conjur Policies') {
             steps {
-                sh './load_policies.sh > output'
+                withCredentials([
+                    conjurSecretCredential(credentialsId: 'SyncVault-LOB_CI-D-App-Conjur-Policies-host_ci_jenkins_projects_conjur-policies-username', variable: 'CONJUR_AUTHN_LOGIN'),
+                    conjurSecretCredential(credentialsId: 'SyncVault-LOB_CI-D-App-Conjur-Policies-host_ci_jenkins_projects_conjur-policies-password', variable: 'CONJUR_AUTHN_API_KEY')
+                ]) {
+                    sh './load_policies.sh > output'
+                }
             }
         }
     }
