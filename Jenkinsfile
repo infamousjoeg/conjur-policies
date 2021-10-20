@@ -24,8 +24,8 @@ pipeline {
         stage('Authenticate cybr-cli to Conjur') {
             steps {
                 withCredentials([
-                    conjurSecretCredential(credentialsId: 'SyncVault-LOB_CI-D-App-Conjur-Policies-Application-ConjurUser-httpsconjur.joegarcia.dev-host\%2fci\%2fjenkins\%2fprojects\%2fconjur-policies-username', variable: 'CONJUR_AUTHN_LOGIN'),
-                    conjurSecretCredential(credentialsId: 'SyncVault-LOB_CI-D-App-Conjur-Policies-Application-ConjurUser-httpsconjur.joegarcia.dev-host\%2fci\%2fjenkins\%2fprojects\%2fconjur-policies-password', variable: 'CONJUR_AUTHN_API_KEY')
+                    conjurSecretCredential(credentialsId: 'SyncVault-LOB_CI-D-App-Conjur-Policies-host_ci_jenkins_projects_conjur-policies-username', variable: 'CONJUR_AUTHN_LOGIN'),
+                    conjurSecretCredential(credentialsId: 'SyncVault-LOB_CI-D-App-Conjur-Policies-host_ci_jenkins_projects_conjur-policies-password', variable: 'CONJUR_AUTHN_API_KEY')
                 ]) {
                     sh './cybr conjur logon-non-interactive'
                 }
