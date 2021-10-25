@@ -31,3 +31,13 @@
     title: DevSecOps Sales Overlay
     company: CyberArk
     cyberark: true
+- !user
+  id: james
+  annotations:
+    first_name: James
+    last_name: Creamer
+    full_name: James Creamer
+    email: james.creamer@cyberark.com
+    title: PAS Programs Architect
+    company: CyberArk
+    cyberark: true
