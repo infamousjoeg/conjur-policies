@@ -1,0 +1,20 @@
+# conjur policy load cloud thales.yml
+
+- !policy
+  id: thales
+  annotations:
+    description: Base policy for children Thales service policies
+    aws: true
+  body:
+    # Create thales/admins group
+    - !group
+      id: admins
+      annotations:
+        description: Owner of Thales branch policies
+        editable: "true"
+
+    # Grant conjur-admins to be thales/admins
+    - !grant
+      role: !group admins
+      members:
+        - !group /conjur-admins
