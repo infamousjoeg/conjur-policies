@@ -5,7 +5,7 @@
 ./cybr conjur append-policy -b root -f grants/grants_user.yml
 ./cybr conjur append-policy -b cd -f cd/ansible/ansible.yml
 ./cybr conjur append-policy -b cd/ansible -f cd/ansible/ops-team-1.yml
-./cybr conjur append-policy -b cd/ansible -f cd/ansible/ops-team-1=2.yml
+./cybr conjur append-policy -b cd/ansible -f cd/ansible/ops-team-2.yml
 ./cybr conjur append-policy -b root -f grants/grants_cd.yml
 ./cybr conjur append-policy -b ci -f ci/jenkins/jenkins.yml
 ./cybr conjur append-policy -b ci/jenkins -f ci/jenkins/dev-team-1.yml
@@ -22,6 +22,7 @@
 ./cybr conjur append-policy -b cloud -f cloud/gcp/gcp.yml
 ./cybr conjur append-policy -b cloud/gcp -f cloud/gcp/compute.yml
 ./cybr conjur append-policy -b cloud/gcp -f cloud/gcp/function.yml
+./cybr conjur append-policy -b cloud -f cloud/thales/thales.yml
 ./cybr conjur append-policy -b web -f web/conjur-oidc-demo.yml
 ./cybr conjur append-policy -b root -f authn/authn-gcp.yml
 ./cybr conjur append-policy -b root -f authn/authn-iam-prod.yml

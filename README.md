@@ -26,16 +26,17 @@
 21. `conjur policy load cloud cloud/gcp/gcp.yml`
 22. `conjur policy load cloud/gcp cloud/gcp/compute.yml`
 23. `conjur policy load cloud/gcp cloud/gcp/function.yml`
-24. `conjur policy load web web/conjur-oidc-demo.yml`
-25. `conjur policy load root authn/authn-gcp.yml`
-26. `conjur policy load root authn/authn-iam-prod.yml`
-27. `conjur policy load root authn/authn-jwt-jenkins.yml`
-28. `conjur policy load root authn/authn-k8s.yml`
-29. `conjur policy load root authn/authn-oidc-webapp.yml`
-30. `conjur policy load root authn/seed-generation.yml`
-31. `conjur policy load root grants/grants_authn.yml`
-32. `conjur policy load root grants/grants_vcs.yml`
-33. `conjur policy load root grants/grants_host.yml`
+24. `conjur policy load cloud cloud/thales/thales.yml`
+25. `conjur policy load web web/conjur-oidc-demo.yml`
+26. `conjur policy load root authn/authn-gcp.yml`
+27. `conjur policy load root authn/authn-iam-prod.yml`
+28. `conjur policy load root authn/authn-jwt-jenkins.yml`
+29. `conjur policy load root authn/authn-k8s.yml`
+30. `conjur policy load root authn/authn-oidc-webapp.yml`
+31. `conjur policy load root authn/seed-generation.yml`
+32. `conjur policy load root grants/grants_authn.yml`
+33. `conjur policy load root grants/grants_vcs.yml`
+34. `conjur policy load root grants/grants_host.yml`
 
 ## Directories
 
