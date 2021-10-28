@@ -17,7 +17,6 @@
     - !variable test-variable
 
     - !permit
-      role: !variable test-variable
+      role: !host conjur-demo
       privileges: [ read, execute ]
-      resources:
-        - !host conjur-demo
+      resource: !variable test-variable
