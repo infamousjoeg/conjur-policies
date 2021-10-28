@@ -27,7 +27,7 @@
 # Grant the kubernetes authn-k8s/consumers group to use the authn-k8s/conjur-demo authenticator web service
 - !grant
   role: !group conjur/authn-k8s/conjur-demo/consumers
-  member: !group cd/kubernetes/authn-k8s/consumers
+  member: !group cd/kubernetes/authn-k8s/conjur-demo/consumers
 
 # Grant the azure/function host to use the authn-azure/conjur-demo authenticator web service
 - !grant
