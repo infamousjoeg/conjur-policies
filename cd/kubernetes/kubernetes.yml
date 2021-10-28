@@ -1,0 +1,27 @@
+# conjur policy load cd kubernetes.yml
+
+- !policy
+  id: kubernetes
+  annotations:
+    description: Resources and secret definitions for Kubernetes applications.
+    kubernetes: true
+  body:
+    # Create group for admins - cd/kubernetes/admins
+    - !group
+      id: admins
+      annotations:
+        description: Owner of kubernetes branch policies
+        editable: "true"
+
+    # Grant conjur-admins to be kubernetes/admins
+    - !grant
+      role: !group admins
+      members:
+        - !group /conjur-admins
+
+    # Create group for authn-k8s consumers - cd/kubernetes/authn-k8s/conjur-demo/consumers
+    - !group
+      id: authn-k8s/conjur-demo/consumers
+      annotations:
+        description: Group containing host identities that can authenticate to authn-k8s/conjur-demo
+        editable: "true"

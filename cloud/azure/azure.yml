@@ -1,0 +1,20 @@
+# conjur policy load cloud azure.yml
+
+- !policy
+  id: azure
+  annotations:
+    description: Base policy for children Azure service policies
+    azure: true
+  body:
+    # Create azure/admins group
+    - !group
+      id: admins
+      annotations:
+        description: Owner of Azure branch policies
+        editable: "true"
+
+    # Grant conjur-admins to be azure/admins
+    - !grant
+      role: !group admins
+      members:
+        - !group /conjur-admins

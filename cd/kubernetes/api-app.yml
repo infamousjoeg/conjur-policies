@@ -1,0 +1,8 @@
+# conjur policy load cd/kubernetes cd/kubernetes/api-app.yml
+
+- !policy
+  id: api-app
+  owner: !group admins
+  annotations:
+    description: Kubernetes application retrieving secrets using API delivery method
+    kubernetes: true

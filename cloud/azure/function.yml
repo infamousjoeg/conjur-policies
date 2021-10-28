@@ -1,0 +1,23 @@
+# conjur policy load cloud/azure cloud/azure/function.yml
+
+- !policy
+  id: function
+  owner: !group admins
+  annotations:
+    azure: true
+  body:
+    - !host
+      id: conjur-demo
+      annotations:
+        azure: true
+        authn-azure/subscription-id: 72736f18-76bf-4c15-a8b1-e66ec2fd0b42
+        authn-azure/resource-group: conjurdemo
+        authn-azure/system-assigned-identity: f1fde8f5-cb23-48af-a948-bce003a02dda
+    
+    - !variable test-variable
+
+    - !permit
+      role: !variable test-variable
+      privileges: [ read, execute ]
+      resources:
+        - !host conjur-demo

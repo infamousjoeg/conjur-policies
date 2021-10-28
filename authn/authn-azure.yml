@@ -1,0 +1,21 @@
+# conjur policy load root authn/authn-azure.yml
+
+- !policy
+  id: conjur/authn-azure/conjur-demo
+  annotations:
+    azure: true
+  body:
+    - !webservice
+
+    - !variable provider-uri
+
+    - !group
+      id: apps
+      annotations:
+        description: Group of hosts that can authenticate using authn-azure/conjur-demo authenticator
+        editable: "true"
+
+    - !permit
+      role: !group apps
+      privileges: [ read, execute ]
+      resource: !webservice

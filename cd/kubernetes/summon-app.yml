@@ -1,0 +1,8 @@
+# conjur policy load cd/kubernetes cd/kubernetes/summon-app.yml
+
+- !policy
+  id: summon-app
+  owner: !group admins
+  annotations:
+    description: Kubernetes application retrieving secrets using Summon delivery method
+    kubernetes: true
