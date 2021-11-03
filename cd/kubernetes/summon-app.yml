@@ -11,5 +11,5 @@
 
     # Grant kubernetes host identity to the consumers group for authn-k8s
     - !grant
-      role: !group authn-k8s/conjur-demo/consumers
+      role: !group /authn-k8s/conjur-demo/consumers
       member: !host
