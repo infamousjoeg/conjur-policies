@@ -20,11 +20,17 @@
   role: !group SyncVault/LOB_CD/D-CD-Ops2-AWS-AccessKeys/delegation/consumers
   members:
     - !host cd/ansible/ops-team-2
+# Collection of kubernetes host identities
+- &k8shosts
+  - !host cd/kubernetes/api-app
+  - !host cd/kubernetes/k8s-secrets-app
+  - !host cd/kubernetes/secretless-app
+  - !host cd/kubernetes/summon-app
 # Grant kubernetes host identities to consumers group for authn-k8s
 - !grant
   role: !group cd/kubernetes/authn-k8s/conjur-demo/consumers
-  members:
-    - !host cd/kubernetes/api-app
-    - !host cd/kubernetes/k8s-secrets-app
-    - !host cd/kubernetes/secretless-app
-    - !host cd/kubernetes/summon-app
+  members: *k8shosts
+# Grant kubernetes host identites to use secrets defined in cd/kubernetes policy
+- !grant
+  role: !group cd/kubernetes/secrets-users
+  members: *k8shosts

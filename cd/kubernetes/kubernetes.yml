@@ -6,6 +6,13 @@
     description: Resources and secret definitions for Kubernetes applications.
     kubernetes: true
   body:
+    # Create secret variables for secret delivery method apps
+    - &variables
+      - !variable db/host
+      - !variable db/username
+      - !variable db/password
+      - !variable db/name
+
     # Create group for admins - cd/kubernetes/admins
     - !group
       id: admins
@@ -18,6 +25,19 @@
       role: !group admins
       members:
         - !group /conjur-admins
+    
+    # Create group for secrets-users - cd/kubernetes/secrets-users
+    - !group
+      id: secrets-users
+      annotations:
+        description: Users of secrets defined in cd/kubernetes policy
+        editable: "true"
+    
+    # Permit secrets-users group to read & execute secret variables
+    - !permit
+      role: !group secrets-users
+      privleges: [ read, execute ]
+      resources: *variables
 
     # Create group for authn-k8s consumers - cd/kubernetes/authn-k8s/conjur-demo/consumers
     - !group
