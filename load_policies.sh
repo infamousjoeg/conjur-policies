@@ -26,6 +26,7 @@
 ./cybr conjur append-policy -b cloud/aws -f cloud/aws/lambda.yml
 ./cybr conjur append-policy -b cloud -f cloud/azure/azure.yml
 ./cybr conjur append-policy -b cloud/azure -f cloud/azure/function.yml
+./cybr conjur append-policy -b cloud/azure -f cloud/azure/devops.yml
 ./cybr conjur append-policy -b cloud -f cloud/gcp/gcp.yml
 ./cybr conjur append-policy -b cloud/gcp -f cloud/gcp/compute.yml
 ./cybr conjur append-policy -b cloud/gcp -f cloud/gcp/function.yml

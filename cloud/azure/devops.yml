@@ -1,0 +1,34 @@
+# conjur policy load cloud/azure cloud/azure/function.yml
+
+- !policy
+  id: devops
+  owner: !group admins
+  annotations:
+    azure: true
+  body:
+    - &hosts
+      - !host
+        id: pipeline-demo
+        annotations:
+          azure: true
+      - !host
+        id: classic-pipeline-demo
+        annotations:
+          azure: true
+    - &variables
+      - !variable secret1
+      - !variable secret2
+
+    - !group
+      id: secrets-users
+      annotations:
+        editable: "true"
+    
+    - !grant
+      role: !group secrets-users
+      members: *hosts
+
+    - !permit
+      roles: !group secrets-users
+      privileges: [ read, execute ]
+      resources: *variables
