@@ -1,0 +1,10 @@
+# conjur policy load terraform aws.yml
+
+- !policy
+  id: aws
+  owner: !group admins
+  annotations:
+    description: AWS cloud secrets and host identity
+  body:
+    # host/cd/terraform/aws
+    - !host

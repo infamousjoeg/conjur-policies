@@ -1,0 +1,19 @@
+# conjur policy load cd terraform.yml
+
+- !policy
+  id: terraform
+  annotations:
+    description: Resources and secret definitions for Terraform.
+  body:
+    # Create group for admins - cd/terraform/admins
+    - !group
+      id: admins
+      annotations:
+        description: Owner of terraform branch policies
+        editable: "true"
+
+    # Grant conjur-admins to be ansible/admins
+    - !grant
+      role: !group admins
+      members:
+        - !group /conjur-admins

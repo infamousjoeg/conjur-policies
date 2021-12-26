@@ -6,6 +6,8 @@
 ./cybr conjur append-policy -b cd -f cd/ansible/ansible.yml
 ./cybr conjur append-policy -b cd/ansible -f cd/ansible/ops-team-1.yml
 ./cybr conjur append-policy -b cd/ansible -f cd/ansible/ops-team-2.yml
+./cybr conjur append-policy -b cd -f cd/terraform/terraform.yml
+./cybr conjur append-policy -b cd/terraform -f cd/terraform/aws.yml
 ./cybr conjur append-policy -b cd -f cd/kubernetes/kubernetes.yml
 ./cybr conjur append-policy -b cd/kubernetes -f cd/kubernetes/api-app.yml
 ./cybr conjur append-policy -b cd/kubernetes -f cd/kubernetes/k8s-secrets-app.yml
