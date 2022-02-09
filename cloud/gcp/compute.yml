@@ -1,4 +1,4 @@
-# conjur policy load gcp compute.yml
+# conjur policy load cloud/gcp compute.yml
 
 - !policy
   id: compute
@@ -28,8 +28,8 @@
       id: project1
       annotations:
         description: Host identity for GCP Compute Engine VM
-        authn-gcp/service-account-id: 113765159713602081800
-        authn-gcp/service-account-email: 36828818583-compute@developer.gserviceaccount.com
+        authn-gcp/service-account-id: 101409438599804241548
+        authn-gcp/service-account-email: 918702820931-compute@developer.gserviceaccount.com
     
     - !grant
       role: !group secret-users

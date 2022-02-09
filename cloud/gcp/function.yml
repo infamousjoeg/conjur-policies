@@ -1,4 +1,4 @@
-# conjur policy load gcp function.yml
+# conjur policy load cloud/gcp function.yml
 
 - !policy
   id: function
@@ -28,8 +28,8 @@
       id: project2
       annotations:
         description: Host identity for GCP Cloud Run Function
-        authn-gcp/service-account-id: 108795798766768432312
-        authn-gcp/service-account-email: authn-gcp@decisive-unison-321320.iam.gserviceaccount.com
+        authn-gcp/service-account-id: 101409438599804241548
+        authn-gcp/service-account-email: 918702820931-compute@developer.gserviceaccount.com 
     
     - !grant
       role: !group secret-users
