@@ -8,3 +8,8 @@
     kubernetes: true
   body:
     - !host
+      annotations:
+        authn-k8s/namespace: summon-app
+        authn-k8s/service-account: summon-app-account
+        authn-k8s/authentication-container-name: authenticator
+        kubernetes: true
