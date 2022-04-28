@@ -19,7 +19,12 @@
   role: !group conjur/authn-jwt/jenkins/consumers
   member: !group ci/jenkins/projects
 
-# Grant the jenkins projects group to use the authn-jwt/jenkins authenticator web service
+# Grant the gitlab projects group to use the authn-jwt/gitlab authenticator web service
+- !grant
+  role: !group conjur/authn-jwt/gitlab/consumers
+  member: !group ci/gitlab/root
+
+# Grant the oidc projects group to use the authn-jwt/oidc authenticator web service
 - !grant
   role: !group conjur/authn-oidc/webapp/users
   member: !group web/conjur-oidc-demo/users

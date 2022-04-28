@@ -1,0 +1,49 @@
+# conjur policy load jenkins projects.yml
+
+- !policy
+  id: root
+  owner: !group admins
+  annotations:
+    description: Project-specific host identities in the root namespace for authn-jwt/gitlab authentication.
+  body:
+    # Group of hosts that can authenticate using this JWT Authenticator
+    - !group
+      annotations:
+        editable: "true"
+
+    # Example GitLab JWT payload:
+    # {
+    #   "namespace_id": "1",
+    #   "namespace_path": "root",
+    #   "project_id": "2",
+    #   "project_path": "root/cybr-cli",
+    #   "user_id": "1",
+    #   "user_login": "root",
+    #   "user_email": "admin@example.com",
+    #   "pipeline_id": "4",
+    #   "pipeline_source": "push",
+    #   "job_id": "14",
+    #   "ref": "main",
+    #   "ref_type": "branch",
+    #   "ref_protected": "true",
+    #   "jti": "46afab5f-bf85-435f-b1ea-9bfb49b3aeb9",
+    #   "iss": "gitlab.joegarcia.dev",
+    #   "iat": 1651115703,
+    #   "nbf": 1651115698,
+    #   "exp": 1651119303,
+    #   "sub": "job_14"
+    # }
+    - !host
+      id: cybr-cli
+      annotations:
+        description: Host identity for cybr-cli project in root namespace within GitLab
+        authn-jwt/gitlab/namespace_path: root
+        authn-jwt/gitlab/namespace_id: 1
+        authn-jwt/gitlab/ref: main
+        authn-jwt/gitlab/project_path: root/cybr-cli
+    
+    # Grant all hosts in collection above to be members of projects group
+    - !grant
+      role: !group
+      members:
+        - !host cybr-cli
