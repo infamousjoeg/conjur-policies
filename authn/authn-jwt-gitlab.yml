@@ -10,6 +10,10 @@
     # * token-app-propery
     # * identity-path
     # * issuer
+    # * ca-cert
+    # * enforced-claims
+    # * mapping-claims
+    # * audience
     # identity-path is always used together with token-app-property
     # however, token-app-property can be used without identity-path
 
@@ -26,14 +30,19 @@
     - !variable
       id: issuer
       annotations:
-          description: JWT Authenticator bases authentication on the JWT issuer. This variable is optional, and is relevant only if there is an iss claim in the JWT. The issuer variable and iss claim values must match.
+        description: JWT Authenticator bases authentication on the JWT issuer. This variable is optional, and is relevant only if there is an iss claim in the JWT. The issuer variable and iss claim values must match.
 
-    # Mandatory: The JWT Provider URI: You must provide either a provider-uri or jwks-uri
+    - !variable
+      id: ca-cert
+      annotations:
+        description: When the JWKS provider server uses a self-signed certificate or the certificate is signed by third-party CA, use this variable to establish a TLS connection and validate server identity.
+
+    # Mandatory: The JWT Provider URI: You must provide either a public-keys or jwks-uri
 
     # - !variable
-    #   id: provider-uri
+    #   id: public-keys
     #   annotations:
-    #     description: The JWT provider URI. Relevant only for JWT providers that support the Open ID Connect (OIDC) protocol.
+    #     description: The public certificate needed for validating the signed JSON Web Token if a web servie or JSON Web Key Set (JWKS) is not provided.
 
     - !variable
       id: jwks-uri
