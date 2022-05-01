@@ -27,7 +27,12 @@
     - !variable
       id: issuer
       annotations:
-          description: JWT Authenticator bases authentication on the JWT issuer. This variable is optional, and is relevant only if there is an iss claim in the JWT. The issuer variable and iss claim values must match.
+        description: JWT Authenticator bases authentication on the JWT issuer. This variable is optional, and is relevant only if there is an iss claim in the JWT. The issuer variable and iss claim values must match.
+    
+    - !variable
+      id: audience
+      annotations:
+        description: JWT Authenticator validates the audience (aud) in the JWT.
 
     # Mandatory: The JWT Provider URI: You must provide either a provider-uri or jwks-uri
 
