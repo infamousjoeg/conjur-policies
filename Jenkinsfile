@@ -15,6 +15,7 @@ pipeline {
             steps {
                 sh '''
                 wget https://github.com/infamousjoeg/cybr-cli/releases/latest/download/cybr-cli_linux_amd64.tar.gz -O cybr-cli_linux_amd64.tar.gz
+                ls -al
                 tar -xzf cybr-cli_linux_amd.tar.gz
                 chmod +x cybr
                 '''
