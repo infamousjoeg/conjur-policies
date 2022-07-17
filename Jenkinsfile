@@ -14,7 +14,8 @@ pipeline {
         stage('Install cybr-cli') {
             steps {
                 sh '''
-                wget https://github.com/infamousjoeg/cybr-cli/releases/latest/download/linux_cybr -O cybr
+                wget https://github.com/infamousjoeg/cybr-cli/releases/latest/download/cybr-cli_linux_amd64.tar.gz
+                tar -xzf cybr-cli_linux_amd.tar.gz
                 chmod +x cybr
                 '''
                 sh './cybr version'
