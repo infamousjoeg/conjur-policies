@@ -1,0 +1,13 @@
+# conjur policy load ansible os-patching.yml
+
+- !policy
+  id: os-patching
+  owner: !group admins
+  annotations:
+    description: OS Patching secrets and host identity
+    ansible: true
+  body:
+    # host/cd/ansible/os-patching
+    - !host
+      annotations:
+        ansible: true

@@ -20,6 +20,11 @@
   role: !group SyncVault/LOB_CD/D-CD-Ops2-AWS-AccessKeys/delegation/consumers
   members:
     - !host cd/ansible/ops-team-2
+# Grant ansible os-patching host identity to AWS Access Keys for D-Nix-AWS-EC2 consumer group
+- !grant
+  role: !group SyncVault/LOB_CD/D-Nix-AWS-EC2-Keypairs/delegation/consumers
+  members:
+    - !host cd/ansible/os-patching
 # Grant terraform aws host identity to AWS Access Keys for terraform consumer group
 - !grant
   role: !group SyncVault/LOB_CD/D-CD-Terraform/delegation/consumers
