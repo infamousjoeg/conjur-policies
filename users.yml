@@ -41,3 +41,13 @@
     title: PAS Programs Architect
     company: CyberArk
     cyberark: true
+- !user
+  id: jed
+  annotations:
+    first_name: Jed
+    last_name: Knopf
+    full_name: Jed Knopf
+    email: jed.knopf@cyberark.com
+    title: Solutions Architect, Central
+    company: CyberArk
+    cyberark: true
