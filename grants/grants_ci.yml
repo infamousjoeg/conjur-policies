@@ -31,3 +31,8 @@
   members:
     - !host ci/jenkins/projects/cybr-cli
     - !host ci/gitlab/root/cybr-cli
+# Grant jenkins Git-Clone-SSHKey host identity to private SSH keys for repository interaction
+- !grant
+  role: !group SyncVault/LOB_CI/D-APP-GitHub-SSHKeys/delegation/consumers
+  members:
+    - !host ci/jenkins/projects/Git-Clone-SSHKeys
