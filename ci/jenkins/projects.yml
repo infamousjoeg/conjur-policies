@@ -51,6 +51,15 @@
         project_url: na
         authn-jwt/jenkins/jenkins_pronoun: Project
         authn-jwt/jenkins/identity: 266e991928f8c7cf155bd54d43d12174-Test-Global-Secret-Retrieval
+    
+    - !host
+      id: Git-Clone-SSHKey
+      annotations:
+        description: Freestyle project in Jenkins named Git-Clone-SSHKey.
+        jenkins: true
+        project_url: na
+        authn-jwt/jenkins/jenkins_pronoun: Project
+        authn-jwt/jenkins/identity: 266e991928f8c7cf155bd54d43d12174-Git-Clone-SSHKey
 
     - !host
       id: Test-Secret-Retrieval-1
