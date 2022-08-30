@@ -99,6 +99,7 @@
         - !host Test-Secret-Retrieval-1
         - !host cybr-cli
         - !host conjur-policies
+        - !host Git-Clone-SSHKey
     
     # Create a group for dev-team-1 project hosts
     - !group
