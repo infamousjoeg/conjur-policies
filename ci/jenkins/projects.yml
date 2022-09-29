@@ -91,6 +91,8 @@
         authn-jwt/jenkins/jenkins_task_noun: Build
         authn-jwt/jenkins/identity: 266e991928f8c7cf155bd54d43d12174-conjur-policies
     
+    - !variable test_secret
+
     - !host
       id: Dev-Team-1
       annotations:
@@ -99,6 +101,11 @@
         authn-jwt/jenkins/jenkins_url_child_prefix: job
         authn-jwt/jenkins/jenkins_task_noun: Build
         authn-jwt/jenkins/identity: 266e991928f8c7cf155bd54d43d12174-Dev-Team-1
+        
+    - !permit
+      role: !host Dev-Team-1
+      privileges: [ read, execute ]
+      resource: !variable test_secret
 
     # Grant all hosts in collection above to be members of projects group
     - !grant
