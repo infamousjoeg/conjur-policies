@@ -90,6 +90,15 @@
         authn-jwt/jenkins/jenkins_pronoun: Pipeline
         authn-jwt/jenkins/jenkins_task_noun: Build
         authn-jwt/jenkins/identity: 266e991928f8c7cf155bd54d43d12174-conjur-policies
+    
+    - !host
+      id: Dev-Team-1
+      annotations:
+        description: Folder in Jenkins that holds many different Jenkins job types.
+        jenkins: true
+        authn-jwt/jenkins/jenkins_url_child_prefix: job
+        authn-jwt/jenkins/jenkins_task_noun: Build
+        authn-jwt/jenkins/identity: 266e991928f8c7cf155bd54d43d12174-Dev-Team-1
 
     # Grant all hosts in collection above to be members of projects group
     - !grant
@@ -100,6 +109,7 @@
         - !host cybr-cli
         - !host conjur-policies
         - !host Git-Clone-SSHKey
+        - !host Dev-Team-1
     
     # Create a group for dev-team-1 project hosts
     - !group
