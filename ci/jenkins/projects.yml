@@ -70,6 +70,16 @@
         authn-jwt/jenkins/jenkins_parent_name: Dev-Team-1
         authn-jwt/jenkins/jenkins_pronoun: Project
         authn-jwt/jenkins/identity: 266e991928f8c7cf155bd54d43d12174-Test-Secret-Retrieval-1
+        
+    - !host
+      id: Test-Secret-Retrieval-1-Pipeline
+      annotations:
+        description: Pipeline project in Jenkins named Test-Secret-Retrieval-1-Pipeline in the Dev-Team-1 folder.
+        jenkins: true
+        project_url: na
+        authn-jwt/jenkins/jenkins_parent_name: Dev-Team-1
+        authn-jwt/jenkins/jenkins_pronoun: Pipeline
+        authn-jwt/jenkins/identity: 266e991928f8c7cf155bd54d43d12174-Test-Secret-Retrieval-1-Pipeline
 
     - !host
       id: cybr-cli
@@ -117,6 +127,7 @@
         - !host conjur-policies
         - !host Git-Clone-SSHKey
         - !host Dev-Team-1
+        - !host Test-Secret-Retrieval-1-Pipeline
     
     # Create a group for dev-team-1 project hosts
     - !group
@@ -129,6 +140,7 @@
       role: !group dev-team-1
       members:
         - !host Test-Secret-Retrieval-1
+        - !host Test-Secret-Retrieval-1-Pipeline
     
     # Create a group for dev-team-2 project hosts
     - !group
