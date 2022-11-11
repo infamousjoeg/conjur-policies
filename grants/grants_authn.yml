@@ -25,6 +25,11 @@
   role: !group conjur/authn-jwt/gitlab/consumers
   member: !group ci/gitlab/root
 
+# Grant the github infamousjoeg group to use the authn-jwt/github authenticator web service
+- !grant
+  role: !group conjur/authn-jwt/github/consumers
+  member: !group ci/github/infamousjoeg
+
 # Grant the oidc projects group to use the authn-jwt/oidc authenticator web service
 - !grant
   role: !group conjur/authn-oidc/webapp/users

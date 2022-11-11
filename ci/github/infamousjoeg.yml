@@ -1,0 +1,75 @@
+- !policy
+  id: infamousjoeg
+  owner: !group admins
+  annotations:
+    description: GitHub Actions resources and secret variables owned by infamousjoeg repositories
+  body:
+    # Group of hosts that can authenticate using this JWT Authenticator
+    - !group
+      annotations:
+        editable: "true"
+
+    # Example GitHub JWT payload:
+    # {
+    #   "typ": "JWT",
+    #   "alg": "RS256",
+    #   "x5t": "example-thumbprint",
+    #   "kid": "example-key-id"
+    # }
+    # {
+    #   "jti": "example-id",
+    #   "sub": "repo:octo-org/octo-repo:environment:prod",
+    #   "environment": "prod",
+    #   "aud": "https://github.com/octo-org",
+    #   "ref": "refs/heads/main",
+    #   "sha": "example-sha",
+    #   "repository": "octo-org/octo-repo",
+    #   "repository_owner": "octo-org",
+    #   "actor_id": "12",
+    #   "repository_visibility": private,
+    #   "repository_id": "74",
+    #   "repository_owner_id": "65",
+    #   "run_id": "example-run-id",
+    #   "run_number": "10",
+    #   "run_attempt": "2",
+    #   "actor": "octocat",
+    #   "workflow": "example-workflow",
+    #   "head_ref": "",
+    #   "base_ref": "",
+    #   "event_name": "workflow_dispatch",
+    #   "ref_type": "branch",
+    #   "job_workflow_ref": "octo-org/octo-automation/.github/workflows/oidc.yml@refs/heads/main",
+    #   "iss": "https://token.actions.githubusercontent.com",
+    #   "nbf": 1632492967,
+    #   "exp": 1632493867,
+    #   "iat": 1632493567
+    # }
+
+    # Create collection of hosts for easy group membership granting
+    - &hosts
+      # Create host identity for cybr-cli repository
+      - !host
+        id: cybr-cli
+        annotations:
+          project_url: "https://github.com/infamousjoeg/cybr-cli"
+          authn-jwt/github/repository: infamousjoeg/cybr-cli
+          authn-jwt/github/repository-owner: infamousjoeg
+      # Create host identity for conceal repository
+      - !host
+        id: conceal
+        annotations:
+          project_url: "https://github.com/infamousjoeg/conceal"
+          authn-jwt/github/repository: infamousjoeg/conceal
+          authn-jwt/github/repository-owner: infamousjoeg
+      # Create host identity for conjur-action repository
+      - !host
+        id: conjur-action
+        annotations:
+          project_url: "https://github.com/infamousjoeg/conjur-action"
+          authn-jwt/github/repository: infamousjoeg/conjur-action
+          authn-jwt/github/repository-owner: infamousjoeg
+    
+    # Grant all hosts in collection above to be members of infamousjoeg group
+    - !grant
+      role: !group
+      members: *hosts

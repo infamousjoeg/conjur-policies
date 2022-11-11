@@ -7,6 +7,7 @@
     - !host ci/jenkins/controller
     - !group ci/jenkins/projects
     - !group ci/github/actions/secret-users
+    - !group ci/github/infamousjoeg
     - !group ci/gitlab/root
 # Grant jenkins dev-team-1 host identities to AWS Access Keys for CI-Dev1 consumer group
 - !grant
@@ -30,6 +31,7 @@
   role: !group SyncVault/LOB_CI/D-App-CybrCLI/delegation/consumers
   members:
     - !host ci/jenkins/projects/cybr-cli
+    - !host ci/github/infamousjoeg/cybr-cli
     - !host ci/gitlab/root/cybr-cli
 # Grant jenkins Git-Clone-SSHKey host identity to private SSH keys for repository interaction
 - !grant

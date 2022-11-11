@@ -23,6 +23,7 @@
 ./cybr conjur append-policy -b ci/gitlab -f ci/gitlab/root.yml
 ./cybr conjur append-policy -b ci -f ci/github/github.yml
 ./cybr conjur append-policy -b ci/github -f ci/github/actions.yml
+./cybr conjur append-policy -b ci/github -f ci/github/infamousjoeg.yml
 ./cybr conjur append-policy -b ci -f ci/refactr/refactr.yml
 ./cybr conjur append-policy -b ci/refactr -f ci/refactr/onboarding.yml
 ./cybr conjur append-policy -b root -f grants/grants_ci.yml
@@ -43,6 +44,7 @@
 ./cybr conjur append-policy -b root -f authn/authn-iam-prod.yml
 ./cybr conjur append-policy -b root -f authn/authn-jwt-jenkins.yml
 ./cybr conjur append-policy -b root -f authn/authn-jwt-gitlab.yml
+./cybr conjur append-policy -b root -f authn/authn-jwt-github.yml
 ./cybr conjur append-policy -b root -f authn/authn-k8s.yml
 ./cybr conjur append-policy -b root -f authn/authn-oidc-webapp.yml
 ./cybr conjur append-policy -b root -f authn/seed-generation.yml
