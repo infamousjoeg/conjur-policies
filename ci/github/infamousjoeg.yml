@@ -53,21 +53,21 @@
         annotations:
           project_url: "https://github.com/infamousjoeg/cybr-cli"
           authn-jwt/github/repository: infamousjoeg/cybr-cli
-          authn-jwt/github/repository-owner: infamousjoeg
+          authn-jwt/github/repository_owner: infamousjoeg
       # Create host identity for conceal repository
       - !host
         id: conceal
         annotations:
           project_url: "https://github.com/infamousjoeg/conceal"
           authn-jwt/github/repository: infamousjoeg/conceal
-          authn-jwt/github/repository-owner: infamousjoeg
+          authn-jwt/github/repository_owner: infamousjoeg
       # Create host identity for conjur-action repository
       - !host
         id: conjur-action
         annotations:
           project_url: "https://github.com/infamousjoeg/conjur-action"
           authn-jwt/github/repository: infamousjoeg/conjur-action
-          authn-jwt/github/repository-owner: infamousjoeg
+          authn-jwt/github/repository_owner: infamousjoeg
     
     # Grant all hosts in collection above to be members of infamousjoeg group
     - !grant
