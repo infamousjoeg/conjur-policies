@@ -33,26 +33,26 @@
     #   "exp": 1651119303,
     #   "sub": "job_14"
     # }
-    - &hosts
-      - !host
-        id: cybr-cli
-        annotations:
-          description: Host identity for cybr-cli project in root namespace within GitLab
-          authn-jwt/gitlab/namespace_path: root
-          authn-jwt/gitlab/namespace_id: 1
-          authn-jwt/gitlab/ref: main
-          authn-jwt/gitlab/project_path: root/cybr-cli
-      - !host
-        id: authn-jwt-gitlab
-        annotations:
-          description: Host identity for authn-jwt-gitlab project in root namespace within GitLab
-          authn-jwt/gitlab/namespace_path: root
-          authn-jwt/gitlab/namespace_id: 1
-          authn-jwt/gitlab/ref: main
-          authn-jwt/gitlab/project_path: root/authn-jwt-gitlab
+    - !host
+      id: cybr-cli
+      annotations:
+        description: Host identity for cybr-cli project in root namespace within GitLab
+        authn-jwt/gitlab/namespace_path: root
+        authn-jwt/gitlab/namespace_id: 1
+        authn-jwt/gitlab/ref: main
+        authn-jwt/gitlab/project_path: root/cybr-cli
+    - !host
+      id: authn-jwt-gitlab
+      annotations:
+        description: Host identity for authn-jwt-gitlab project in root namespace within GitLab
+        authn-jwt/gitlab/namespace_path: root
+        authn-jwt/gitlab/namespace_id: 1
+        authn-jwt/gitlab/ref: main
+        authn-jwt/gitlab/project_path: root/authn-jwt-gitlab
     
     # Grant all hosts in collection above to be members of projects group
     - !grant
       role: !group
-      members:
-        - *hosts
+      members: 
+        - !host cybr-cli
+        - !host authn-jwt-gitlab
