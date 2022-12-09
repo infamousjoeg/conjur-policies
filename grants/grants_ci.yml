@@ -38,3 +38,8 @@
   role: !group SyncVault/LOB_CI/D-APP-GitHub-SSHKeys/delegation/consumers
   members:
     - !host ci/jenkins/projects/Git-Clone-SSHKey
+# Grant gitlab host identities to secrets for demonstration purposes
+- !grant
+  role: !group SyncVault/LOB_CI/DemoSafe/delegation/consumers
+  members:
+    - !group ci/gitlab/root
