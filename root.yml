@@ -30,3 +30,4 @@
   privileges: [ read ]
   resources:
     - !policy root
+    - !policy cd/ansible/ops-team-1
