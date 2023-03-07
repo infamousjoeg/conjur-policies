@@ -24,10 +24,3 @@
   id: web
   annotations:
     description: All web application policies
-
-- !permit
-  role: !group conjur-auditors
-  privileges: [ read ]
-  resources:
-    - !policy root
-    - !policy cd/ansible/ops-team-1
