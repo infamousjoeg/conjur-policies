@@ -2,6 +2,7 @@
 
 ./cybr conjur append-policy -b root -f users.yml
 ./cybr conjur append-policy -b root -f groups.yml
+./cybr conjur append-policy -b root -f root.yml
 ./cybr conjur append-policy -b root -f grants/grants_user.yml
 ./cybr conjur append-policy -b cd -f cd/ansible/ansible.yml
 ./cybr conjur append-policy -b cd/ansible -f cd/ansible/ops-team-1.yml
